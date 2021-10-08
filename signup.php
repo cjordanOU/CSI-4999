@@ -16,6 +16,7 @@
                 <div class="signup-logo"></div>
                 <div class="login-text signup-text">
                     <h1>Sign Up</h1>
+                    <hr>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="signup-fillarea">
                             <label>First Name:</label>

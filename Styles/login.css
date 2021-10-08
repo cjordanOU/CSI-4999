@@ -66,13 +66,23 @@ a {
     padding: 5rem 0;
 }
 
+.login-text h1 {
+    margin-bottom: .6em;
+}
+
+.login-text hr {
+    border-color: rgba(37, 30, 27, 0.7);
+    margin-bottom: 1.15em;
+}
+
 .signup-text {
     text-align: left;
     padding: 0 4em;
 }
 
 .login-topbar {
-    background-color: rgb(37, 30, 27);
+    background-color: rgb(46, 34, 28);
+    border-bottom: 0px;
     height: 1.75em;
 }
 
