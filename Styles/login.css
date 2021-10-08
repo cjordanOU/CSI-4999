@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: "Open Sans", cursive, sans-serif;
+    text-rendering: optimizeLegibility;
 }
 
 /* ------ ------ Body & Html ------ ------ */
@@ -81,7 +82,7 @@ a {
 }
 
 .login-topbar {
-    background-color: rgb(46, 34, 28);
+    background-color: rgb(37, 30, 27);
     border-bottom: 0px;
     height: 1.75em;
 }
