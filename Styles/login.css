@@ -62,9 +62,9 @@ a {
 }
 
 .login-text {
-    height: 37em;
+    /* height: 37em;
     min-height: 37em;
-    /* padding: 5rem 0; */
+    padding: 5rem 0; */
     padding: 0 4em 4em 5rem;
     
 }
@@ -111,7 +111,7 @@ a {
     height: 12.5em;
     max-height: 12.5em;
     background-image: url("../Images/Elliott_Tower2.jpg");
-    background-size: 420% 400%;
+    background-size: 300% 300%;
     background-position: 20% 7%;
 }
 

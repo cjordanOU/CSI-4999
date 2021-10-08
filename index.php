@@ -21,9 +21,13 @@
                 <div class="header-bottom">
                     <nav class="header-container">
                         <a href="#" title="Placeholder Header Link">Link #1</a>
+                        <section></section>
                         <a href="#" title="Placeholder Header Link">Link #2</a>
+                        <section></section>
                         <a href="#" title="Placeholder Header Link">Link #3</a>
+                        <section></section>
                         <a href="#" title="Placeholder Header Link">Link #4</a>
+                        <section></section>
                         <a href="#" title="Placeholder Header Link">Link #5</a>
                     </nav>
                 </div>

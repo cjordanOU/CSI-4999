@@ -61,18 +61,39 @@ header {
 }
 
 .header-container {
-    width: 48%;
+    width: 53%;
     margin: auto;
     text-align: center;
     display: flex;
     justify-content: space-between;
 }
 
+.header-container section {
+    background-color:rgb(98, 83, 77);
+    height: 1.35rem;
+    margin-top: .175rem;
+    width: 1px;
+}
+
 .header-container a {
     display: block;
     color: whitesmoke;
     text-decoration: none;
+    padding: .25rem 1rem;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
 
+.header-container a:hover {
+    color:rgb(153, 122, 20);
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.header-container a:active {
+    color:rgb(121, 74, 12);
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
 }
 
 .header-logo {
