@@ -64,7 +64,9 @@ a {
 .login-text {
     height: 37em;
     min-height: 37em;
-    padding: 5rem 0;
+    /* padding: 5rem 0; */
+    padding: 0 4em 4em 5rem;
+    
 }
 
 .login-text h1 {
@@ -111,6 +113,12 @@ a {
     background-image: url("../Images/Elliott_Tower2.jpg");
     background-size: 420% 400%;
     background-position: 20% 7%;
+}
+
+.login-logo {
+    background-image: url("../Images/Oakland_Center.jpg");
+    background-size: cover;
+    background-position-y: 50%;
 }
 
 .login-button {
