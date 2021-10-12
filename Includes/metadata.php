@@ -7,5 +7,7 @@
     echo '<!-- Linked Fonts -->';
     echo '<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">';
+    //echo '<!-- Scripts -->';
+    //echo '<script src="Scripts/main_functions.js" type="text/javascript"></script>';
     echo '<!-- Title -->';
     ?>
