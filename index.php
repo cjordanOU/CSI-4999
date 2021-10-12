@@ -10,10 +10,13 @@
         <link href="Styles/style.css" rel="stylesheet">
     </head>
     <body>
-        <?php require_once('Includes/page_elements.php'); ?>
-
         <section id="background-gradient"></section>
-        <?php displayHeader(); ?>
+        
+        <?php
+            require_once('Includes/page_elements.php');
+            displayHeader();
+        ?>
+
         <section id="page-content">
             
             <section id="page-container">
