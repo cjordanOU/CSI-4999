@@ -15,7 +15,10 @@
         <?php
             require_once('Includes/page_elements.php');
             displayHeader();
+            displaySidebarNavigation();
         ?>
+
+        
 
         <section id="page-content">
             
@@ -29,6 +32,7 @@
                     <p>Sagittis eu volutpat odio facilisis mauris sit amet massa vitae. Diam donec adipiscing tristique risus nec feugiat in fermentum. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. At tempor commodo ullamcorper a lacus. In hac habitasse platea dictumst vestibulum rhoncus est. Cursus eget nunc scelerisque viverra mauris. Tellus cras adipiscing enim eu turpis egestas. Dictum fusce ut placerat orci nulla pellentesque dignissim. Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Nullam ac tortor vitae purus faucibus ornare suspendisse. Cursus vitae congue mauris rhoncus. Ullamcorper dignissim cras tincidunt lobortis feugiat. In eu mi bibendum neque egestas congue. Eget mauris pharetra et ultrices. Adipiscing at in tellus integer feugiat scelerisque varius. Odio aenean sed adipiscing diam. Malesuada pellentesque elit eget gravida. Congue nisi vitae suscipit tellus mauris.</p>
                 </main>
             </section>
+            
 
             <?php displayFooter(); ?>
         </section>

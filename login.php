@@ -15,7 +15,6 @@
                 <div class="login-topbar"></div>
                 <div class="signup-logo login-logo"></div>
                 <div class="login-text">
-                    <!--<img src="Images/Oakland_Center.jpg" alt="Placeholder Logo" class="login-logo">-->
                     <h1>Login</h1>
                     <hr>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -44,5 +43,9 @@
                 </div>
             </section>
         </section>
+
+        <aside>
+            <a class="return-button" href="index.php" title="Return to the homepage"> </a>
+        </aside>
     </body>
 </html>

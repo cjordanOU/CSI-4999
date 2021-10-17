@@ -231,3 +231,29 @@ footer div nav a:hover, footer div address a:hover {
     margin-bottom: 0;
     margin-top: .35em;
 }
+
+.forum-navbar-container {
+    position: fixed;
+    top: 25vh;
+    height: 50vh;
+    width: 13em;
+    left: 0;
+    background-color: rgb(179, 171, 167);
+    box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
+    border-bottom-right-radius: 6px;
+}
+
+.forum-navbar-topbar {
+    background-color: rgb(37, 30, 27);
+    border-bottom: 0px;
+    height: 1.75em;
+}
+
+.forum-navbar-content {
+    margin-left: 1em;
+}
+
+.forum-navbar-content nav a {
+    display: block;
+    margin-bottom: 1em;
+}

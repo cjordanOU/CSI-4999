@@ -158,3 +158,20 @@ a {
     -webkit-transition: background-color 0.2s;
     transition: background-color 0.2s;
 }
+
+.return-button {
+    position: fixed;
+    display: block;
+    left: 31em;
+    height: 100px;
+    width: 100px;
+    background-image: url('../Images/Icons/back-arrow.png');
+    top: 10em;
+    z-index: 100;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.return-button:hover {
+    background-image: url('../Images/Icons/back-arrow2.png');
+}

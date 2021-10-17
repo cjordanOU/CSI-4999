@@ -78,5 +78,9 @@
                 </div>
             </section>
         </section>
+
+        <aside>
+            <a class="return-button" href="index.php" title="Return to the homepage"> </a>
+        </aside>
     </body>
 </html>
