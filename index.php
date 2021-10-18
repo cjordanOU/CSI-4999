@@ -9,7 +9,7 @@
         <!-- Styles -->
         <link href="Styles/style.css" rel="stylesheet">
     </head>
-    <body>
+    <body onload="startSlideshow()">
         <section id="background-gradient"></section>
         
         <?php
@@ -23,6 +23,15 @@
         <section id="page-content">
             
             <section id="page-container">
+
+                <section id="slideshowContainer">
+                    <div id="slideshowImage" class="parallaxBG-large"></div>
+                    <div class="parallaxText1">
+                        <h2>Welcome to GrizzChat</h2>
+                        <a href="signup.php" title="Click here to sign up for GrizzChat">Join in on the action</a>
+                    </div>
+                </section>
+                
                 <main>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. Euismod lacinia at quis risus. Vitae et leo duis ut diam quam nulla porttitor. Diam maecenas sed enim ut sem viverra aliquet eget sit. Sed felis eget velit aliquet. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Varius sit amet mattis vulputate enim. Id porta nibh venenatis cras sed felis eget velit aliquet. Adipiscing tristique risus nec feugiat. Porta nibh venenatis cras sed felis eget velit aliquet. Blandit massa enim nec dui nunc mattis. Lorem ipsum dolor sit amet. Phasellus faucibus scelerisque eleifend donec pretium vulputate.</p>
                     <p>Odio ut sem nulla pharetra diam sit amet nisl suscipit. Scelerisque eu ultrices vitae auctor. Eu sem integer vitae justo eget. Volutpat est velit egestas dui id ornare arcu odio. Duis convallis convallis tellus id interdum velit laoreet id donec. Convallis aenean et tortor at risus viverra adipiscing at. Elementum nibh tellus molestie nunc. Tristique risus nec feugiat in fermentum posuere urna. Tellus orci ac auctor augue mauris augue neque gravida. Duis ut diam quam nulla porttitor. Sem viverra aliquet eget sit amet tellus cras adipiscing. Velit scelerisque in dictum non consectetur a erat. Dignissim convallis aenean et tortor at risus viverra. Malesuada nunc vel risus commodo. Tincidunt eget nullam non nisi est sit amet facilisis.</p>

@@ -257,3 +257,112 @@ footer div nav a:hover, footer div address a:hover {
     display: block;
     margin-bottom: 1em;
 }
+
+.parallaxBG-large {
+    /* Makes a parallax image background (Large) */
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Specify the background image in HTML using the style attribute */
+}
+
+.parallaxText1 {
+    /* Positions the parallaxText to be on top of the parallaxBG div */
+    position: absolute;
+    top: 35em;
+    left: 40em;
+    transform: translate(-45%, -65%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.parallaxText1 h2, .parallaxText2 h2 {
+    /* Header2 Text for parallaxText */
+    color: white;
+    font-size: 3em;
+    text-shadow: 2px 2px 2px #26201F;
+    margin-bottom: .25em;
+}
+
+.parallaxText1 a {
+    /* The parallaxText button */
+    position: absolute;
+    transform: translateX(-15em);
+    box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
+    background: #31231A;
+    padding: 24px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.parallaxText1 a:hover {
+    /* Changes color of the parallaxText button when hovered over */
+    background: #704e39;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+
+/* ------ ------ Slideshow Fade effect ------ ------ */
+.fade {
+    /* Slideshow fade */
+    -webkit-animation: fade ease 2s;
+    -moz-animation: fade ease 2s;
+    -o-animation: fade ease 2s;
+    -ms-animation: fade ease 2s;
+    animation: fade ease 2s;
+}
+@keyframes fade {
+    /* Keyframes for slideshow fade */
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fade {
+    /* Keyframes for slideshow fade */
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fade {
+    /* Keyframes for slideshow fade */
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fade {
+    /* Keyframes for slideshow fade */
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fade {
+    /* Keyframes for slideshow fade */
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+/* ------ ------ Image Links ------ ------ */
+
+
+/* ------ ------ ID Styles ------ ------ */
+#slideshowContainer {
+    background: linear-gradient(0deg, rgba(27,16,0,1) 0%, rgba(255,255,255,1) 100%);
+    z-index: 50;
+    width: 100%;
+    max-width: 100%;
+    height: 40em;
+    max-height: 40em;
+}
+
+#slideshowImage {
+    background-image: url('../Images/Slideshow/4.jpg');
+}

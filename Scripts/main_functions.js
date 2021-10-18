@@ -1,19 +1,26 @@
 /* ------ ------ Declarations ------ ------ */
-var mediaQuery = window.matchMedia("screen and (max-width: 1199px)");
+var prefix = "Images/Slideshow/";
+var imageArray = new Array(4);
 
-function HeaderScroll() {
-    var headerExists = document.getElementById("header");
-    if (headerExists != null) {
-      // Changes the styling on the webpage header when the user scrolls the mouse down from the top of the page
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        // When the webpage is scrolled 50px or more
-        document.getElementById("header").style.cssText = "height: 4.5em; max-height: 4.5em; padding: 1vh 3%; box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);";
-      } else {
-        // When the webpage is not scrolled
-        document.getElementById("header").style.cssText = "height: 6.5em; max-height: 6.5em;";
-      }
-    }
-    else {
-        print("HEADER ERROR");
-    }
-  }
+for (i=0; i<imageArray.length; i++){
+  imageArray[i] = prefix + (i+1) + ".jpg";
+}
+var imageCounter = 0;
+
+function rotate() {
+  var imageObject = document.getElementById('slideshowImage');
+  //var imageContainer = imageObject.parentNode;
+  //removes and adds animation class so it fires everytime the image changes
+  imageObject.classList.remove('fade');
+  setTimeout(function(){
+      imageObject.classList.add('fade');
+      imageObject.style.backgroundImage = "url('"+imageArray[imageCounter]+"')";
+      ++imageCounter;
+      if (imageCounter >= 4) imageCounter = 0;
+  }, 50);
+}
+
+function startSlideshow() {
+  document.getElementById('slideshowImage').style.backgroundImage=imageArray[1];
+  setInterval('rotate()', 4500);
+}

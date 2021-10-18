@@ -12,7 +12,7 @@
     }
 
     function displayFooter() {
-        echo '<footer><div><h4 class="footer-logo">GrizzForum</h4><nav><a href="index.php" title="Return to the homepage">Home</a><a href="#" title="Placeholder Link">Placeholder</a>';
+        echo '<footer><div><h4 class="footer-logo">GrizzChat</h4><nav><a href="index.php" title="Return to the homepage">Home</a><a href="#" title="Placeholder Link">Placeholder</a>';
         echo '<a href="#" title="Placeholder Link">Placeholder</a><a href="#" title="Placeholder Link">Placeholder</a></nav><p class="footer-copyright">Copyright © 2021</p></div>';
         echo '<div><address><a href="#" title="Placeholder Link">Placeholder</a><a href="#" title="Placeholder Link">Placeholder</a><a href="#" title="Placeholder Link">Placeholder</a></address></div>';
         echo '<div><p>Our Motto:</p><p>Motto Here</p></div></footer>';
