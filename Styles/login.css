@@ -165,7 +165,8 @@ a {
     left: 31em;
     height: 100px;
     width: 100px;
-    background-image: url('../Images/Icons/back-arrow.png');
+    /*background-image: url('../Images/Icons/back-arrow.png');*/
+    background-image: url('../Images/Icons/back-arrow2.png');
     top: 10em;
     z-index: 100;
     -webkit-transition: 0.2s;
@@ -173,5 +174,6 @@ a {
 }
 
 .return-button:hover {
-    background-image: url('../Images/Icons/back-arrow2.png');
+    background-image: url('../Images/Icons/back-arrow.png');
+    /*background-image: url('../Images/Icons/back-arrow2.png');*/
 }
