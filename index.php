@@ -3,7 +3,7 @@
     <head>
         <?php require_once('Includes/metadata.php'); ?>
 
-        <title>Home - Forum Test</title>
+        <title>Home - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
 
         <!-- Styles -->

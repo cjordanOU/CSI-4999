@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <?php require_once('Includes/metadata.php'); ?>
-        <title>Login - Forum</title>
+        <title>Login - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
 
         <!-- Styles -->
