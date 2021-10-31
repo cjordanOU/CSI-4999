@@ -13,7 +13,7 @@
 
 		}
 
-		createPost($conn, $postMess, $postTitle);
+		createPost($dbConnection, $postMess, $postTitle);
 
 		}else{
 		
