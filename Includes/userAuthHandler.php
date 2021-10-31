@@ -1,4 +1,10 @@
 <?php
+    /* ------------------------------------------------------------------------------------- */
+    // Grizzchat © 2021
+    // User Authentication Script
+    // This file contains the logic for processing user authentication such as logging in and signing up.
+    /* ------------------------------------------------------------------------------------- */
+    
     // dbConnection Include
     require_once 'Includes/dbConnection.php';
 
