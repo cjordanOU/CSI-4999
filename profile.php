@@ -14,15 +14,25 @@
         
         <?php
             require_once('Includes/page_elements.php');
+            require_once('Includes/profileHandler.php');
             displayHeader();
+            displaySidebarNavigation();
         ?>
 
         <section id="page-content">
             
-            <section id="page-container">
-                <main>
-                    
-                </main>
+            <section id="page-container" class="profile-page">
+                <section id="posts-container">
+                    <main>
+                        <?php displayUsersPosts(); ?>
+                    </main>
+                </section>
+
+                <section id="profile-container">
+                    <aside>
+                        <?php displayUsersProfile(); ?>
+                    </aside>
+                </section>
             </section>
 
             <?php displayFooter(); ?>

@@ -123,11 +123,16 @@ header {
 
 .header-logo {
     display: block;
-    background-color: yellow;
     height: 100%;
-    width: 17.5%;
+    width: 22.5%;
+    padding-left: 3%;
     text-align: center;
     line-height: 4.25em;
+}
+
+.header-logo img {
+    width: 100%;
+    height: 100%;
 }
 
 .header-search {
@@ -309,6 +314,43 @@ footer div nav a:hover, footer div address a:hover {
     transition: 0.2s;
 }
 
+.profile-page {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.post-box, .profile-box {
+    background-color: whitesmoke;
+    border-radius: 6px;
+    padding: .25em;
+    padding-left: .65em;
+    margin-top: .75em;
+    box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
+}
+
+.post-box:last-of-type {
+    margin-bottom: .75em;
+}
+
+.post-box-title h3, .post-box-title hr {
+    margin: .25em 0;
+}
+
+.post-box-content {
+    margin: 0;
+}
+
+.profile-box {
+    width: 92.5%;
+}
+
+.profile-box-image {
+    width: 100%;
+    height: 8em;
+    background: url('../Images/default_profile.png');
+    background-size: 100% 100%;
+}
 
 /* ------ ------ Slideshow Fade effect ------ ------ */
 .fade {
@@ -365,4 +407,13 @@ footer div nav a:hover, footer div address a:hover {
 
 #slideshowImage {
     background-image: url('../Images/Slideshow/4.jpg');
+    filter: sepia(25%);
+}
+
+#posts-container {
+    width: 70%;
+}
+
+#profile-container {
+    width: 30%;
 }

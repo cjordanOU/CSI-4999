@@ -31,9 +31,10 @@
 
                         echo "<BR>";
                         $sql = "SELECT * FROM posts";
-                        $result = mysqli_query($dbConnection, $sql);
-                        $resultCheck = mysqli_num_rows($result);
-                        if ($result->num_rows > 0) {
+                        //$result = mysqli_query($dbConnection, $sql);
+                        $result = $dbConnection-> query($sql);
+                        //$resultCheck = mysqli_num_rows($result);
+                        if ($result-> num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class = 'block-container'>";
                                 echo "<div class = 'block-body'>" .$row["TITLE"]. $row["CONTENT"]. " " 

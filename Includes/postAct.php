@@ -10,16 +10,15 @@
 		if (emptyPost($postMess, $postTitle)!== false){
 			header("location: ./post-thread.php?error=emptyinput");
 			exit();
-
 		}
 
 		createPost($dbConnection, $postMess, $postTitle);
 
-		}else{
-		
+	}
+	
+	else{
 		header("location: ./post-thread.php");
 		exit();
-		}
 	}
 ?>
 	
