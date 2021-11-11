@@ -37,3 +37,9 @@
         echo '<a href="#" title="Placeholder Sidebar Link">Placeholder</a><a href="#" title="Placeholder Sidebar Link">Placeholder</a><a href="#" title="Placeholder Sidebar Link">Placeholder</a>';
         echo '</nav></section></aside>';
     }
+
+    // Checks to see if the user is logged in already or not
+    function loginCheckBasic() {
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+        }
+    }

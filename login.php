@@ -10,6 +10,13 @@
     </head>
 
     <body>
+
+        <?php
+            require_once('Includes/page_elements.php');
+            require_once('Includes/userAuthHandler.php');
+            loginCheckBasic();
+        ?>
+
         <section class="login-box">
             <section class="login-area">
                 <div class="login-topbar"></div>
