@@ -13,7 +13,12 @@
     function displayHeader() {
         echo '<header id="header"><div class="header-top">';
         echo '<a href="index.php" title="logo" class="header-logo"><img src="Images/GrizzChat_Logo.png" alt="Grizzchat Logo"></a><input class="header-search" type="search" placeholder="Search..">';
-        echo '<a href="login.php" title="Click here to log in" class="header-login button-1">Login</a><a href="signup.php" title="Click here to sign up" class="header-signup button-1 button-dark">Sign Up</a>';
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+            echo '<a href="login.php" title="Click here to log in" class="header-login button-1">Login</a><a href="signup.php" title="Click here to sign up" class="header-signup button-1 button-dark">Sign Up</a>';
+        }
+        else {
+            echo '<a href="profile.php" title="Click here to view your profile" class="header-login button-1">My Profile</a><a href="Includes/signout.php" title="Click here to sign out of your account" class="header-signup button-1 button-dark">Sign Out</a>';
+        }
         echo '</div><div class="header-bottom"><nav class="header-container">';
         echo '<a href="https://moodle.oakland.edu" title="Placeholder Header Link">Moodle</a><section></section><a href="https://mysail.oakland.edu" title="Placeholder Header Link">MySail</a><section></section><a href="#" title="Placeholder Header Link">Notifications</a>';
         echo '<section></section><a href="#" title="Placeholder Header Link">Contact</a><section></section><a href="#" title="Placeholder Header Link">About Us</a>';

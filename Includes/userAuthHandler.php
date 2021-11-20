@@ -17,10 +17,7 @@
     $hashed_password = "";
 
     function loginHandler() {
-        loginCheckBasic();  // Checks if user is already logged in
-
-        // Start the user session
-        session_start();
+        loginCheckBasic();  // Checks if user is already logged in and starts session
 
         // Check to see if user is already logged in
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){

@@ -5,8 +5,8 @@
 
     function displayUsersPosts() {
         // Select all of the user's posts and display them
-        //$sql = "SELECT * FROM posts WHERE User_Info_USER_ID={$_SESSION["id"]}";
-        $sql = "SELECT * FROM posts WHERE User_Info_USER_ID=1"; // DEBUG HARD CODE
+        $sql = "SELECT * FROM posts WHERE User_Info_USER_ID={$_SESSION["id"]}";
+        //$sql = "SELECT * FROM posts WHERE User_Info_USER_ID=1"; // DEBUG HARD CODE
         $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
         $result = $dbConnection-> query($sql);
 

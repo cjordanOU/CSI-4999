@@ -16,6 +16,7 @@
             require_once('Includes/page_elements.php');
             displayHeader();
             displaySidebarNavigation();
+            loginCheckBasic();
         ?>
 
         
