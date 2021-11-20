@@ -16,6 +16,7 @@
         <?php
             require_once('Includes/page_elements.php');
             displayHeader();
+            displaySidebarNavigation();
         ?>
 
         <section id="page-content">

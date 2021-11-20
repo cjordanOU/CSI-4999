@@ -17,7 +17,6 @@
             require_once('Includes/profileHandler.php');
             displayHeader();
             displaySidebarNavigation();
-            loginCheckBasic();
         ?>
 
         <section id="page-content">
