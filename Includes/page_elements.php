@@ -40,6 +40,9 @@
 
     // Checks to see if the user is logged in already or not
     function loginCheckBasic() {
+        // Initialize the session
+        session_start();
+
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
     }
