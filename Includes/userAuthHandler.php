@@ -14,6 +14,7 @@
     $username = ""; // Used for signup and login
     $password = ""; // Used for login
     $password1 = ""; // Used for signup
+    $hashed_password = "";
 
     function loginHandler() {
         loginCheckBasic();  // Checks if user is already logged in
@@ -29,32 +30,37 @@
 
         // Processing form data when form is submitted
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-
+            echo "POST recieved\n"; // debug
             // Check if username is empty
             if(empty(trim($_POST["username"]))){
                 $username_err = "Please enter username.";
             } else{
-                $username = trim($_POST["username"]);
+                $GLOBALS['username'] = trim($_POST["username"]);
+                echo "username has been set globally\n"; // debug
             }
 
             // Check if password is empty
             if(empty(trim($_POST["password"]))){
                 $password_err = "Please enter your password.";
             } else{
-                $password = trim($_POST["password"]);
+                $GLOBALS['password'] = trim($_POST["password"]);
+                echo "password has been set globally\n"; // debug
             }
 
             // Validate credentials
             if(empty($username_err) && empty($password_err)) {
                 // Prepare a select statement
-                $sql = "SELECT MEMBER_ID, USERNAME, PASSWORD FROM members WHERE USERNAME = ?";
+                echo "select statement has been run\n"; // debug
+                echo "username is: " . $GLOBALS['username']; // debug
+                echo "password is: " . $GLOBALS['password']; // debug
+                $sql = "SELECT USER_ID, USER_NAME, PASSWORD FROM user_info WHERE USER_NAME = ?";
 
-                if($stmt = mysqli_prepare($connection, $sql)) {
+                if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $sql)) {
                     // Bind variables to the prepared statement as parameters
                     mysqli_stmt_bind_param($stmt, "s", $param_username);
 
                     // Set parameters
-                    $param_username = $username;
+                    $param_username = $GLOBALS['username'];
 
                     // Attempt to execute the prepared statement
                     if(mysqli_stmt_execute($stmt)){
@@ -64,43 +70,44 @@
                         // Check if username exists, if yes then verify password
                         if(mysqli_stmt_num_rows($stmt) == 1){                    
                             // Bind result variables
-                            mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                            mysqli_stmt_bind_result($stmt, $id, $GLOBALS['username'], $GLOBALS['hashed_password']);
 
 
                             if(mysqli_stmt_fetch($stmt)){
-                                if(password_verify($password, $hashed_password)){
+                                if(password_verify($GLOBALS['password'], $GLOBALS['hashed_password'])){
                                     // Password is correct, so start a new session
                                     session_start();
 
                                     // Store data in session variables
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION["id"] = $id;
-                                    $_SESSION["username"] = $username;
+                                    $_SESSION["username"] = $GLOBALS['username'];
+                                    echo "SESSION USERNAME IS: " . $_SESSION["username"];
 
                                     // Employee Check
-                                    $empCheck = "SELECT * FROM employees WHERE MEMBER_ID=$id and WHEN_TERMINATED IS NULL";
-                                    $checkEmployee = $connection-> query($empCheck);
+                                    $empCheck = "SELECT * FROM roles WHERE User_Info_USER_ID=$id and WHEN_TERMINATED IS NULL";
+                                    $checkEmployee = $GLOBALS['dbConnection']-> query($empCheck);
 
                                     $loginAttemptStatement = "INSERT INTO login_attempts (`TIME`, `SUCCESS`, `MEMBER_ID`) VALUES(NOW(), 1 ,$id)";
-                                    if($stmt = mysqli_prepare($connection, $loginAttemptStatement)) {
+                                    if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $loginAttemptStatement)) {
                                         mysqli_stmt_execute($stmt);
                                     }
 
                                     if ($checkEmployee-> num_rows > 0) {
                                         $_SESSION["employee"] = true;
                                         // Redirect user to accounts page
-                                        header("location: accounts.php");
+                                        header("location: profile.php");
                                     }
                                     else {
                                         $_SESSION["employee"] = false;
                                         // Redirect user to accounts page
-                                        header("location: accounts.php");
+                                        header("location: profile.php");
                                     }
 
                                 } else{
 
-                                    $loginAttemptStatement = "INSERT INTO login_attempts (`TIME`, `SUCCESS`, `MEMBER_ID`) VALUES(NOW(), 0 ,$id)";
-                                    if($stmt = mysqli_prepare($connection, $loginAttemptStatement)) {
+                                    $loginAttemptStatement = "INSERT INTO login_attempts (`TIME`, `SUCCESS`, `USER_ID`) VALUES(NOW(), 0 ,$id)";
+                                    if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $loginAttemptStatement)) {
                                         mysqli_stmt_execute($stmt);
                                     }
 
@@ -123,7 +130,7 @@
             }
 
             // Close connection
-            mysqli_close($connection);
+            mysqli_close($GLOBALS['dbConnection']);
         }
     }
 
