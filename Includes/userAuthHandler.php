@@ -34,21 +34,16 @@
         $confirmPasswordError = "";
 
         // Processing form data when form is submitted
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            echo "POST has been recieved"; // debug
-            
-
+        if($_SERVER["REQUEST_METHOD"] == "POST"){   
             // Validate username
             // We want to make sure that the username entered is valid and is not already used by another user in the database.
             // See the function below for what this is doing.
             validateSignupUsername();
-            echo "your username is:" . $GLOBALS['username']; //debug
 
             // Validate password
             // We want to make sure the password entered is valid and matches between the base password and confirm password.
             // See the function below for what this is doing.
             validateSignupPassword();
-            echo "your password is:" . $GLOBALS['password1']; //debug
 
             // Send over the validated information to be stored in the database, essentially creating the users account.
             // See the function below for what this is doing.
@@ -84,9 +79,6 @@
                 // were to gain access to our database, they couldn't get users password information.
                 $param_username = $GLOBALS['username'];
                 $param_password = password_hash($GLOBALS['password1'], PASSWORD_DEFAULT); // Creates a password hash
-                
-                echo "param_password is: " . $param_password; // debug
-                echo "   major is :" . $major; //debug
 
                 // Attempt to execute the prepared statement and send it to the database.
                 // If successful, it will bring you to the login page to log in with your new account information.
@@ -111,7 +103,6 @@
             $passwordError = "Password must have atleast 6 characters."; // We can change this number easily if needed.
         } else{
             $password1 = (trim($_POST["password1"]));
-            echo "validateSignupPassword() STEP 2 COMPLETED"; // DEBUG
         }
         
         // Validate confirm password (password2) and makes sure passwords match.
@@ -123,7 +114,6 @@
                 $confirmPasswordError = "Password did not match.";
             }
             else {
-                echo "validateSignupPassword() STEP 3 COMPLETED"; // DEBUG
                 $GLOBALS['password1'] = $password1;
             }
         }
@@ -131,7 +121,6 @@
 
     // Validates the username by checking to make sure there is text entered and that it is a unique username.
     function validateSignupUsername() {
-        echo "validateSignupUsername() STEP 1 COMPLETED"; // DEBUG
         // Makes sure that the username entered was not left blank
         if(empty(trim($_POST['username']))){
             $usernameError = "Please enter a username.";
@@ -155,7 +144,6 @@
                         $usernameError = "This username is already taken.";
                     } else{
                         $GLOBALS['username'] = trim($_POST["username"]);
-                        echo "validateSignupUsername() STEP 2 COMPLETED"; // DEBUG
                     }
                 } else{
                     echo "Oops! Something went wrong. Please try again later. [validateSignupUsername()]";
@@ -163,7 +151,6 @@
 
                 // Close statement (Security purposes)
                 mysqli_stmt_close($stmt);
-                echo "validateSignupUsername() STEP 3 COMPLETED"; // DEBUG
             }
         }
     }
