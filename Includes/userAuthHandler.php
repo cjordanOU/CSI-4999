@@ -82,24 +82,24 @@
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION["id"] = $id;
                                     $_SESSION["username"] = $GLOBALS['username'];
-                                    echo "SESSION USERNAME IS: " . $_SESSION["username"];
+                                    echo "SESSION USERNAME IS: " . $_SESSION["username"]; // debug
 
-                                    // Employee Check
-                                    $empCheck = "SELECT * FROM roles WHERE User_Info_USER_ID=$id and WHEN_TERMINATED IS NULL";
-                                    $checkEmployee = $GLOBALS['dbConnection']-> query($empCheck);
+                                    // Roles Check
+                                    $roleCheckSQL = "SELECT * FROM roles WHERE User_Info_USER_ID=$id";
+                                    $checkRoles = $GLOBALS['dbConnection']-> query($roleCheckSQL);
 
                                     $loginAttemptStatement = "INSERT INTO login_attempts (`TIME`, `SUCCESS`, `MEMBER_ID`) VALUES(NOW(), 1 ,$id)";
                                     if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $loginAttemptStatement)) {
                                         mysqli_stmt_execute($stmt);
                                     }
 
-                                    if ($checkEmployee-> num_rows > 0) {
-                                        $_SESSION["employee"] = true;
+                                    if ($checkRoles-> num_rows > 0) {
+                                        $_SESSION["alumni"] = true;
                                         // Redirect user to accounts page
                                         header("location: profile.php");
                                     }
                                     else {
-                                        $_SESSION["employee"] = false;
+                                        $_SESSION["alumni"] = false;
                                         // Redirect user to accounts page
                                         header("location: profile.php");
                                     }
@@ -121,7 +121,7 @@
                             $login_err = "Invalid username or password.";
                         }
                     } else {
-                        echo "Oops! Something went wrong. Please try again later.";
+                        echo "Oops! Something went wrong. Please try again later. [Error UA202]";
                     }
 
                     // Close statement
@@ -198,7 +198,7 @@
                     // Redirect to login page
                     header("location: login.php");
                 } else{
-                    echo "Something went wrong. Please try again later.";
+                    echo "Something went wrong. Please try again later. [Error UA102]";
                 }
             }
         }
@@ -258,7 +258,7 @@
                         $GLOBALS['username'] = trim($_POST["username"]);
                     }
                 } else{
-                    echo "Oops! Something went wrong. Please try again later. [validateSignupUsername()]";
+                    echo "Oops! Something went wrong. Please try again later. [Error UA101]";
                 }
 
                 // Close statement (Security purposes)
