@@ -246,6 +246,7 @@ footer div nav a:hover, footer div address a:hover {
     background-color: rgb(179, 171, 167);
     box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
     border-bottom-right-radius: 6px;
+    z-index: 101;
 }
 
 .forum-navbar-topbar {
