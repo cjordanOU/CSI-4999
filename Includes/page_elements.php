@@ -11,6 +11,7 @@
     // Creates and populates the header of the website on pages when the function is called.
     // Remember to make sure you have page_elements.php included in the frontend file if you are having issues.
     function displayHeader() {
+        loginCheckBasic();
         echo '<header id="header"><div class="header-top">';
         echo '<a href="index.php" title="logo" class="header-logo"><img src="Images/GrizzChat_Logo.png" alt="Grizzchat Logo"></a><input class="header-search" type="search" placeholder="Search..">';
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
