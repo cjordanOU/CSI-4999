@@ -15,6 +15,7 @@
             require_once('Includes/page_elements.php');
             require_once('Includes/userAuthHandler.php');
             loginCheckBasic();
+            loginHandler();
         ?>
 
         <section class="login-box">
