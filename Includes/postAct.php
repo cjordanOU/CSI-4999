@@ -1,9 +1,10 @@
 <?php
-
+	session_start();
 	if(isset($_POST["submit"])){
 
 		$postMess = $_POST['forumPost'];
 		$postTitle = $_POST['title'];
+		$uid = $_SESSION["id"];
 		include_once 'dbConnection.php';
 		include_once 'function-inc.php';
 		
@@ -12,7 +13,7 @@
 			exit();
 		}
 
-		createPost($dbConnection, $postMess, $postTitle);
+		createPost($dbConnection, $uid, $postMess, $postTitle);
 
 	}
 	

@@ -1,3 +1,8 @@
+<?php
+            require_once('Includes/page_elements.php');
+            loginCheckBasic();
+        ?>
+
 <!DOCTYPE html>
 <html>
 <body>
