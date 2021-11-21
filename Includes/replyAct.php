@@ -18,7 +18,7 @@ if(isset($_POST["submit"])){
 
 	}else{
 	
-  header("location: ./post-thread.php");
+  header("location: ./posts.php");
 	exit();
 	}
 	
