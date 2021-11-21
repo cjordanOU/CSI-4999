@@ -18,6 +18,7 @@
         ?>
 
         <section class="login-box">
+            <?php warningDisplay(); ?>
             <section class="login-area">
                 <div class="login-topbar"></div>
                 <div class="signup-logo login-logo"></div>

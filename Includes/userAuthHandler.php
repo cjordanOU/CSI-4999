@@ -16,6 +16,14 @@
     $password1 = ""; // Used for signup
     $hashed_password = "";
 
+    // Not logged in warning
+    function warningDisplay() {
+        if (isset($_GET['warning']) == "notLoggedIn") {
+            echo "<section class='warning-notification'><div class='warning-topbar'></div><h3>You must be logged in to perform that action.</h3></section>";
+        }
+    }
+
+
     function loginHandler() {
         loginCheckBasic();  // Checks if user is already logged in and starts session
 

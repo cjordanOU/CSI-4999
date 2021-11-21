@@ -8,6 +8,14 @@
     /* ------------------------------------------------------------------------------------- */
 
 
+    function loginCheckRedirect() {
+        // Check to see if the user is logged in, if not then redirect to the login page
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+            header("location: login.php?warning=notLoggedIn");
+            exit;
+        }
+    }
+
     // Creates and populates the header of the website on pages when the function is called.
     // Remember to make sure you have page_elements.php included in the frontend file if you are having issues.
     function displayHeader() {

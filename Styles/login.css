@@ -177,3 +177,20 @@ a {
     background-image: url('../Images/Icons/back-arrow.png');
     /*background-image: url('../Images/Icons/back-arrow2.png');*/
 }
+
+.warning-notification {
+    position:fixed;
+    display: block;
+    width: 35rem;
+    margin: auto;
+    top: 5em;
+    text-align: center;
+    background: #b77c7c;
+    border-radius: 0px 0px 6px 6px;
+    border: 2px solid crimson;
+}
+
+.warning-topbar {
+    height: .75em;
+    background:crimson;
+}

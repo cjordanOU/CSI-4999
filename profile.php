@@ -17,6 +17,7 @@
             require_once('Includes/profileHandler.php');
             displayHeader();
             displaySidebarNavigation();
+            loginCheckRedirect();
         ?>
 
         <section id="page-content">
