@@ -35,7 +35,7 @@
     }
     $dbConnection ->close();
   
-    header("location: ./post-thread.php?error=none");
+    header("location: ./posts.php?error=none");
     exit();
   }
 
@@ -66,7 +66,7 @@
     }
     $dbConnection ->close();
 
-    header("location: ./post-thread.php?error=none");
+    header("location: ./posts.php?error=none");
     exit();
   }
 
