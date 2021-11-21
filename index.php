@@ -25,7 +25,9 @@
             <section id="page-container">
 
                 <section id="slideshowContainer">
-                    <div id="slideshowImage" class="parallaxBG-large"></div>
+                    <div id="slideshowImage" class="parallaxBG-large">
+                        <div id="slideshowFade"></div>
+                    </div>
                     <div class="parallaxText1">
                         <h2>Welcome to GrizzChat</h2>
                         <a href="signup.php" title="Click here to sign up for GrizzChat">Join in on the action</a>

@@ -18,6 +18,11 @@
                 echo "</section>";
             }
         }
+        else {
+            echo "<section class='post-box post-box-empty'>";
+            echo "<div class='post-box-content'><p>You haven't made any posts yet! Start contributing today, and you can see your posts that you have made here!</p></div>";
+            echo "</section>";
+        }
     }
 
     function displayUsersProfile() {

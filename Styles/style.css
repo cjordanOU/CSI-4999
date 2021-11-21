@@ -330,6 +330,10 @@ footer div nav a:hover, footer div address a:hover {
     box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
 }
 
+.post-box-empty {
+    background-color: rgba(245, 245, 245, 0.192);
+}
+
 .post-box:last-of-type {
     margin-bottom: .75em;
 }
@@ -409,6 +413,14 @@ footer div nav a:hover, footer div address a:hover {
 #slideshowImage {
     background-image: url('../Images/Slideshow/4.jpg');
     filter: sepia(25%);
+    z-index: 49;
+}
+
+#slideshowFade {
+    background: linear-gradient(180deg, rgba(179,171,167,0.55) 0%, rgba(179,171,167,0.25) 26%, rgba(203,197,194,0) 49%, rgba(255,255,255,0) 100%);
+    height: 100%;
+    width: 100%;
+    z-index: 55;
 }
 
 #posts-container {
