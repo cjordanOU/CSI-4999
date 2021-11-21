@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2021 at 11:37 PM
+-- Generation Time: Nov 21, 2021 at 03:30 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -34,6 +34,13 @@ CREATE TABLE `categories` (
   `DATE` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`CATEGORIES_ID`, `TITLE`, `DESCRIPTION`, `DATE`) VALUES
+(1, 'Introduction', 'Introduce yourself.', '2021-11-21 02:20:53');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +53,13 @@ CREATE TABLE `login_attempts` (
   `SUCCESS` tinyint(4) NOT NULL,
   `USER_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`ATTEMPT`, `TIME`, `SUCCESS`, `USER_ID`) VALUES
+(1, '2021-11-20 17:56:46', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -60,6 +74,13 @@ CREATE TABLE `posts` (
   `POST_TIME` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `PARENT_THREAD` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`User_Info_USER_ID`, `Posts_ID`, `CONTENT`, `POST_TIME`, `PARENT_THREAD`) VALUES
+(2, 7, '<p>test reply</p>', '2021-11-21 02:28:43', 4);
 
 -- --------------------------------------------------------
 
@@ -96,6 +117,13 @@ CREATE TABLE `threads` (
   `CREATED` timestamp NOT NULL DEFAULT current_timestamp(),
   `Views` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Stores thread information';
+
+--
+-- Dumping data for table `threads`
+--
+
+INSERT INTO `threads` (`User_Info_USER_ID`, `Categories_CATEGORIES_ID`, `THREADS_ID`, `THREAD_TITLE`, `THREAD_CONTENT`, `CREATED`, `Views`) VALUES
+(2, 1, 4, 'Test title', '<p>test body</p>', '2021-11-21 02:20:59', 1);
 
 -- --------------------------------------------------------
 
@@ -147,7 +175,7 @@ ALTER TABLE `login_attempts`
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`Posts_ID`),
   ADD KEY `posts-users` (`User_Info_USER_ID`),
-  ADD KEY `link_to_thread` (`PARENT_THREAD`);
+  ADD KEY `PARENT_THREAD` (`PARENT_THREAD`);
 
 --
 -- Indexes for table `roles`
@@ -177,25 +205,25 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CATEGORIES_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CATEGORIES_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `THREADS_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `THREADS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_info`
@@ -211,7 +239,8 @@ ALTER TABLE `user_info`
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts-users` FOREIGN KEY (`User_Info_USER_ID`) REFERENCES `user_info` (`USER_ID`);
+  ADD CONSTRAINT `posts-users` FOREIGN KEY (`User_Info_USER_ID`) REFERENCES `user_info` (`USER_ID`),
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`PARENT_THREAD`) REFERENCES `threads` (`THREADS_ID`);
 
 --
 -- Constraints for table `roles`
@@ -224,8 +253,7 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `threads`
   ADD CONSTRAINT `threads-categories` FOREIGN KEY (`Categories_CATEGORIES_ID`) REFERENCES `categories` (`CATEGORIES_ID`),
-  ADD CONSTRAINT `threads-user` FOREIGN KEY (`User_Info_USER_ID`) REFERENCES `user_info` (`USER_ID`),
-  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`THREADS_ID`) REFERENCES `posts` (`PARENT_THREAD`);
+  ADD CONSTRAINT `threads-user` FOREIGN KEY (`User_Info_USER_ID`) REFERENCES `user_info` (`USER_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

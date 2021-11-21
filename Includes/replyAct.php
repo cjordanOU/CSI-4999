@@ -2,6 +2,8 @@
 
 if(isset($_POST["submit"])){
 
+	session_start();
+	$uid = $_SESSION["id"];
 	$replyMess = $_POST['forumPost'];
 	include_once 'dbConnection.php';
 	include_once 'function-inc.php';
@@ -12,7 +14,7 @@ if(isset($_POST["submit"])){
 
 	}
 
-	createReply($dbConnection, $replyMess);
+	createReply($dbConnection, $uid, $replyMess);
 
 	}else{
 	

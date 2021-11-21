@@ -53,10 +53,10 @@
     return $result; 
   }
 
-  function createReply($dbConnection, $postMess){
+  function createReply($dbConnection, $uid, $postMess){
   
     $sql = "INSERT INTO posts (User_Info_USER_ID, Parent_THREAD, CONTENT, POST_TIME)
-    VALUES ('$id', '1', '$postMess', CURRENT_TIMESTAMP) ";
+    VALUES ('$uid', '4', '$postMess', CURRENT_TIMESTAMP) ";
   
     if ($dbConnection->query($sql) === TRUE){
       echo " New record created successfully";
@@ -66,7 +66,6 @@
     }
     $dbConnection ->close();
   
-   header("location: ../posts.php?error=none");
     exit();
   }
 

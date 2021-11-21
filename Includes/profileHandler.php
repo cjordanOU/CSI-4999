@@ -21,7 +21,7 @@
     }
 
     function displayUsersProfile() {
-        $sql = "SELECT * FROM user_info WHERE USER_ID={$_SESSION["id"]}"; // DEBUG HARD CODE
+        $sql = "SELECT * FROM user_info WHERE USER_ID={$_SESSION["id"]}";
         $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
         $result = $dbConnection-> query($sql);
 
