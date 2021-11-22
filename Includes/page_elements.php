@@ -37,10 +37,10 @@
     // Creates and populates the footer of the website on pages when the function is called.
     // Remember to make sure you have page_elements.php included in the frontend file if you are having issues.
     function displayFooter() {
-        echo '<footer><div><h4 class="footer-logo">GrizzChat</h4><nav><a href="index.php" title="Return to the homepage">Home</a><a href="#" title="Placeholder Link">Placeholder</a>';
-        echo '<a href="#" title="Placeholder Link">Placeholder</a><a href="#" title="Placeholder Link">Placeholder</a></nav><p class="footer-copyright">Copyright © 2021</p></div>';
-        echo '<div><address><a href="#" title="Placeholder Link">Placeholder</a><a href="#" title="Placeholder Link">Placeholder</a><a href="#" title="Placeholder Link">Placeholder</a></address></div>';
-        echo '<div><p>Our Motto:</p><p>Motto Here</p></div></footer>';
+        echo '<footer><div><h4 class="footer-logo">GrizzChat</h4><nav><a href="index.php" title="Return to the homepage">Home</a><a href="#" title="Placeholder Link">Notifications</a>';
+        echo '<a href="#" title="Placeholder Link">Contact</a><a href="#" title="Placeholder Link">About Us</a></nav><p class="footer-copyright">Copyright © 2021</p></div>';
+        echo '<div><address><a href="#" title="Placeholder Link">Contact</a><a href="#" title="Placeholder Link">About Us</a><a href="#" title="Placeholder Link">Placeholder</a></address></div>';
+        echo '<div><p>Our Motto:</p><p>Connect with y<b>OU</b>r Community</p></div></footer>';
     }
 
     // Creates and populates the sidebar of the website on pages when the function is called.

@@ -13,7 +13,7 @@
         if ($result-> num_rows > 0) {
             while ($row = $result-> fetch_assoc()) {
                 echo "<section class='post-box'>";
-                echo "<div class='post-box-title'><h3 title='". $row["POST_TIME"] ."'>". $row["TITLE"] ."</h3><hr></div>";
+                echo "<div class='post-box-title'><h3 title='". $row["POST_TIME"] ."'>". $row["PARENT_THREAD"] ."</h3><hr></div>";
                 echo "<div class='post-box-content'><p>". $row["CONTENT"] ."</p></div>";
                 echo "</section>";
             }

@@ -213,6 +213,14 @@ footer div nav a, footer div address a {
     transition: 0.2s;
 }
 
+footer div nav a {
+    margin-left: .25rem;
+}
+
+footer div nav a:first-child {
+    margin-left: 0;
+}
+
 footer div address a {
     display: block;
 }
