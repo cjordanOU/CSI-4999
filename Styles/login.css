@@ -4,6 +4,10 @@
     text-rendering: optimizeLegibility;
 }
 
+*::selection {
+    background-color: #e9ca17;
+}
+
 /* ------ ------ Body & Html ------ ------ */
 html {
     margin: 0;
@@ -183,7 +187,7 @@ a {
     display: block;
     width: 35rem;
     margin: auto;
-    top: 5em;
+    top: 1.75em;
     text-align: center;
     background: #b77c7c;
     border-radius: 0px 0px 6px 6px;
