@@ -3,21 +3,27 @@
     <head>
         <?php require_once('Includes/metadata.php'); ?>
 
-        <title>Profile - GrizzChat</title>
+        <title>Maps - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
 
         <!-- Styles -->
         <link href="Styles/style.css" rel="stylesheet">
+    
+        <!-- Temporary Style -->
+        <style type = "text/css">
+			#map { 
+			height: 55em;
+			width: 100%;
+			}
+		</style>
     </head>
     <body>
         <section id="background-gradient"></section>
         
         <?php
             require_once('Includes/page_elements.php');
-            require_once('Includes/profileHandler.php');
             displayHeader();
             displaySidebarNavigation();
-            loginCheckRedirect();
         ?>
 
         <script>
@@ -39,28 +45,16 @@
 
         <section id="page-content">
             
-            <section id="page-container" class="profile-page">
-                <section id="posts-container">
-                    <main>
-                        <?php displayUsersPosts(); ?>
-                    </main>
-                </section>
-
-                <section id="profile-container">
-                    <aside>
-                        <?php displayUsersProfile(); ?>
-                    </aside>
-                    <div id="map-small"></div>
-                </section>
+            <section id="page-container">
+                <div id="map"></div>
             </section>
-        
-            <?php displayFooter(); ?>
-        </section>
 
-        <script
+            <script
 			src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBF8_thPcmONP8UeT6nu47m8huxcGWt4po&callback=initMap&libraries=&v=weekly&channel=2"
 			async
-        ></script>
+		    ></script>
 
+            <?php displayFooter(); ?>
+        </section>
     </body>
 </html>

@@ -438,3 +438,13 @@ footer div nav a:hover, footer div address a:hover {
 #profile-container {
     width: 30%;
 }
+
+#map { 
+    height: 55em;
+    width: 100%;
+}
+
+#map-small { 
+    height: 15em;
+    width: 100%;
+}
