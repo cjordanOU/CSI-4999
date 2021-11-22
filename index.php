@@ -37,16 +37,15 @@
                 <main>
                     <section class="narrowPad">
                     <h1>Welcome to GrizzChat</h1>
-                         <p> Thank you for visiting our webpage. GrizzChat is an online forum dedicated to help bridge the communcation for Oakland University 
+                         <p>Thank you for visiting Grizzchat! GrizzChat is an online forum dedicated to help bridge the communcation for the Oakland University Community.
 					        Here you will be able to communicate with other Oakland University students as well as Oakland
 					        University Alumni! We want to create an inclusive welcoming enviroment where students can feel comfortable communicating with each
-					        other. GrizzChat is an application we aimed to create to help centralize communication between all Oakland University students.
+					        other and be able to interact with and expand their networking opportunities to help get a head start on their professional careers.
+                            GrizzChat is an application we wanted to make in order to create a centralized communications hub between all of the Oakland University community during the current pandemic era and in to the future.
                          </p>
 
-                
-     
                         <img src="Images\Oakland_Center.jpg" alt="Grizz Image" width="720" height="420">  
-                    <p>Suggestions to improve the app?</p>
+                    <p>Have a suggestion to improve the app? We'd love to hear from you.</p>
                     <a href="contact.php" title="Browse our menu">Contact Us</a>
                 </main>
             </section>

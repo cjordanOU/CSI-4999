@@ -9,7 +9,7 @@ if(isset($_POST["submit"])){
 	include_once 'function-inc.php';
 	
 	if (emptyReply($replyMess)!== false){
-		header("location: ./index.php?error=emptyinput");
+		header("location: ../index.php?error=emptyinput");
 		exit();
 
 	}
@@ -18,7 +18,7 @@ if(isset($_POST["submit"])){
 
 	}else{
 	
-  header("location: ./posts.php");
+  header("location: ../posts.php");
 	exit();
 	}
 	

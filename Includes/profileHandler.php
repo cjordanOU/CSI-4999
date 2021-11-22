@@ -35,16 +35,16 @@
                 $major = str_replace('_', ' ', $row["MAJOR"]);
                 echo "<section class='profile-box'>";
                 echo "<div class='profile-box-image'></div><hr>";
-                echo "<div class='post-box-content'><p>". $row["USER_NAME"] ."</p>";
-                echo "<p>". $major . " Major</p>";
+                echo "<div class='post-box-content'><p title='Username'>". $row["USER_NAME"] ."</p>";
+                echo "<p title='Major'>". $major . " Major</p>";
                 if ($row["GRADUATION_DATE"] == "Alumni") {
-                    echo "<p>OU Alumni</p>";
+                    echo "<p title='Alumni Status'>OU Alumni</p>";
                 }
                 else {
-                    echo "<p>Graduation Date: ". $row["GRADUATION_DATE"] ."</p>";
+                    echo "<p title='Graduation Date'>Graduation Date: ". $row["GRADUATION_DATE"] ."</p>";
                 }
                 
-                echo "<p>Grizzchat User Since: <span title='". $row["CREATED_AT"] . "'>". substr($row["CREATED_AT"], 0, -9) . "</span></p>";
+                echo "<p title='User since'>Grizzchat User Since: <span title='". $row["CREATED_AT"] . "'>". substr($row["CREATED_AT"], 0, -9) . "</span></p>";
                 echo "</div></section>";
             }
         }

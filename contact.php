@@ -24,18 +24,19 @@
             
             <section id="page-container">
 
-                <section id="slideshowContainer">
+                <section id="slideshowContainer-small">
                     <div id="slideshowImage" class="parallaxBG-large"></div>
-                    <div class="parallaxText1">
+                    <div class="parallaxText1-small">
                         <h2>Contact Us</h2>
-                        <a href="signup.php" title="Click here to sign up for GrizzChat">Join in on the action</a>
                     </div>
                 </section>
                 
                 <main>
+					<br class="compatability-margin">
                     <form id="contactForm" action="contactProcess.php" method="post">
 
 				<!-- Personal Information -->
+				
 				<fieldset>
 					<legend> Personal Information </legend>
 					<table>

@@ -9,7 +9,7 @@
 		include_once 'function-inc.php';
 		
 		if (emptyPost($postMess, $postTitle)!== false){
-			header("location: ./posts.php?error=emptyinput");
+			header("location: ../posts.php?error=emptyinput");
 			exit();
 		}
 
@@ -18,7 +18,7 @@
 	}
 	
 	else{
-		header("location: ./posts.php");
+		header("location: ../posts.php");
 		exit();
 	}
 ?>

@@ -26,9 +26,7 @@
             require_once('Includes/page_elements.php');
             displayHeader();
             displaySidebarNavigation();
-            loginCheckBasic();
-            session_start();
-
+            loginCheckRedirect(); // Not intended to be in final release
         ?>
 
         <section id="page-content">
@@ -37,7 +35,7 @@
                 <main>
                     <form action = "post-thread.php">
 
-                        <input type="submit" value = "Make a Thread">
+                        <input type="submit" value = "Make a Thread" class="thread-creator">
 
                     </form>
                     <?php
@@ -56,8 +54,8 @@
                         if ($result-> num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class = 'block-container'>";
-                                echo "<div class = 'block-body'>" . $row["THREAD_TITLE"]. $row["THREAD_CONTENT"]. $row["USER_NAME"]. " " 
-                                . $row["CREATED"] . $_SESSION["id"] ;
+                                echo "<div class = 'block-body'><h2>" . $row["THREAD_TITLE"]."</h2><hr>" .$row["THREAD_CONTENT"]. "<p class='post-user'>". $row["USER_NAME"]. "</p> <p class='post-info'>" 
+                                . $row["CREATED"] . $_SESSION["id"]. "</p>" ;
                                 echo "</div>  <br>";
                                 
                             }
@@ -76,7 +74,7 @@
                         <textarea id="forumPost" name="forumPost" rows="4" cols="50">
                         </textarea>
                         <br><br>
-                        <button type="submit" name ="submit">reply</button>
+                        <button type="submit" name ="submit" class="thread-reply">Reply</button>
                         </form>';
 
                         }

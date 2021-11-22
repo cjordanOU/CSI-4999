@@ -50,6 +50,8 @@ a {
 
 #page-container {
     padding-top: 6.5em;
+    padding-bottom: 2.5em;
+    min-height: 89.5vh;
 }
 
 main {
@@ -192,9 +194,10 @@ header {
 }
 
 footer {
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 1300px;
     height: 6.5em;
     padding: 1em;
     background-color: rgb(95, 76, 76);
@@ -243,6 +246,10 @@ footer div nav a:hover, footer div address a:hover {
 .footer-copyright {
     margin-bottom: 0;
     margin-top: .35em;
+}
+
+.footer-ou {
+    color: rgb(207, 167, 56);
 }
 
 .forum-navbar-container {
@@ -295,7 +302,19 @@ footer div nav a:hover, footer div address a:hover {
     text-align: center;
 }
 
-.parallaxText1 h2, .parallaxText2 h2 {
+.parallaxText1-small {
+    /* Positions the parallaxText to be on top of the parallaxBG div */
+    position: absolute;
+    top: 15em;
+    left: 40em;
+    transform: translate(-135%, -205%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.parallaxText1 h2, .parallaxText1-small , .parallaxText2 h2 {
     /* Header2 Text for parallaxText */
     color: white;
     font-size: 3em;
@@ -365,6 +384,78 @@ footer div nav a:hover, footer div address a:hover {
     background-size: 100% 100%;
 }
 
+.block-body {
+    border-top: 10px solid #31231A;
+    background: whitesmoke;
+    border-radius: 0px 0px 6px 6px;
+    padding: .35em .5em;
+}
+
+.block-body h2 {
+    font-weight: bolder;
+    margin: 0;
+    margin-left: .25em;
+}
+
+.block-body p {
+    margin-left: .65em;
+}
+
+.post-user{
+    font-size: .85rem;
+    font-weight: bold;
+    margin-bottom: .175em;
+    margin-top: .175em;
+}
+
+.post-info {
+    font-size: .95rem;
+    font-weight: bold;
+    margin-bottom: .175em;
+    margin-top: .175em;
+}
+
+.thread-creator {
+    cursor: pointer;
+    margin-top: 2.5em;
+    box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
+    background: #31231A;
+    padding: 24px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    border: none;
+}
+
+.thread-reply {
+    cursor: pointer;
+    margin-top: 2.5em;
+    box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
+    background: #31231A;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    border: none;
+}
+
+.thread-creator:hover, .thread-reply:hover {
+    background: #704e39;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.thread-title {
+    font-size: 1.9em;
+    margin-bottom: .5rem;
+}
+
+.compatibility-margin {
+    margin-bottom: 6.5em;
+}
+
 /* ------ ------ Slideshow Fade effect ------ ------ */
 .fade {
     /* Slideshow fade */
@@ -416,6 +507,15 @@ footer div nav a:hover, footer div address a:hover {
     max-width: 100%;
     height: 40em;
     max-height: 40em;
+}
+
+#slideshowContainer-small {
+    background: linear-gradient(0deg, rgba(27,16,0,1) 0%, rgba(255,255,255,1) 100%);
+    z-index: 50;
+    width: 100%;
+    max-width: 100%;
+    height: 20em;
+    max-height: 20em;
 }
 
 #slideshowImage {
