@@ -8,7 +8,7 @@
     // dbConnection Include
     require_once 'Includes/dbConnection.php';
 
-    echo "userAuthHandler.php succesfully loaded";
+    // echo "userAuthHandler.php succesfully loaded"; // Debug
 
     // Global Variables
     $username = ""; // Used for signup and login
