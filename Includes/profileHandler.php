@@ -37,7 +37,13 @@
                 echo "<div class='profile-box-image'></div><hr>";
                 echo "<div class='post-box-content'><p>". $row["USER_NAME"] ."</p>";
                 echo "<p>". $major . " Major</p>";
-                echo "<p>Graduation Date: WE NEED TO ADD THIS TO OUR DATABASE</p>";
+                if ($row["GRADUATION_DATE"] == "Alumni") {
+                    echo "<p>OU Alumni</p>";
+                }
+                else {
+                    echo "<p>Graduation Date: ". $row["GRADUATION_DATE"] ."</p>";
+                }
+                
                 echo "<p>Grizzchat User Since: <span title='". $row["CREATED_AT"] . "'>". substr($row["CREATED_AT"], 0, -9) . "</span></p>";
                 echo "</div></section>";
             }

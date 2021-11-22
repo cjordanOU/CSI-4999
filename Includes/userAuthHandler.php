@@ -58,7 +58,7 @@
                 echo "select statement has been run\n"; // debug
                 echo "username is: " . $GLOBALS['username']; // debug
                 echo "password is: " . $GLOBALS['password']; // debug
-                $sql = "SELECT USER_ID, USER_NAME, PASSWORD FROM user_info WHERE USER_NAME = ?";
+                $sql = "SELECT USER_ID, USER_NAME, PASSWORD, GRADUATION_DATE FROM user_info WHERE USER_NAME = ?";
 
                 if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $sql)) {
                     // Bind variables to the prepared statement as parameters
@@ -75,7 +75,7 @@
                         // Check if username exists, if yes then verify password
                         if(mysqli_stmt_num_rows($stmt) == 1){                    
                             // Bind result variables
-                            mysqli_stmt_bind_result($stmt, $id, $GLOBALS['username'], $GLOBALS['hashed_password']);
+                            mysqli_stmt_bind_result($stmt, $id, $GLOBALS['username'], $GLOBALS['hashed_password'], $grad_date);
 
 
                             if(mysqli_stmt_fetch($stmt)){

@@ -198,3 +198,13 @@ a {
     height: .75em;
     background:crimson;
 }
+
+.float-right {
+    float: right;
+    margin: 0;
+    margin-top: .35em;
+}
+
+.float-left {
+    float: left;
+}
