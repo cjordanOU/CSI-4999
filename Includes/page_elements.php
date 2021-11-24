@@ -47,8 +47,8 @@
     // Remember to make sure you have page_elements.php included in the frontend file if you are having issues.
     function displaySidebarNavigation() {
         echo '<aside class="forum-navbar-container"><section class="forum-navbar-topbar"></section><section class="forum-navbar-content"><h3>Forum Navigation</h3><nav>';
-        echo '<a href="posts.php" title="View posts made by users">View Posts</a><a href="maps.php" title="View the Alumni Map">Alumni Map</a><a href="#" title="Placeholder Sidebar Link">Placeholder</a>';
-        echo '<a href="#" title="Placeholder Sidebar Link">Placeholder</a><a href="#" title="Placeholder Sidebar Link">Placeholder</a><a href="#" title="Placeholder Sidebar Link">Placeholder</a>';
+        echo '<a href="posts.php" title="View posts made by users">View Posts</a><a href="maps.php" title="View the Alumni Map">Alumni Map</a><a href="#" title="Placeholder Sidebar Link">Meet an Alumni</a>';
+        echo '<a href="#" title="Placeholder Sidebar Link">Pinned Class #1</a><a href="#" title="Placeholder Sidebar Link">Pinned Class #2</a><a href="#" title="Placeholder Sidebar Link">Pinned Class #3</a>';
         echo '</nav></section></aside>';
     }
 

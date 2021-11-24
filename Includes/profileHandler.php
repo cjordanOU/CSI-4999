@@ -41,7 +41,12 @@
                     echo "<p title='Alumni Status'>OU Alumni</p>";
                 }
                 else {
-                    echo "<p title='Graduation Date'>Graduation Date: ". $row["GRADUATION_DATE"] ."</p>";
+                    if (empty($row["GRADUATION_DATE"])) {
+                        echo "<p title='Graduation Date'>Graduation Date: 2021</p>";
+                    }
+                    else {
+                        echo "<p title='Graduation Date'>Graduation Date: ". $row["GRADUATION_DATE"] ."</p>";
+                    }
                 }
                 
                 echo "<p title='User since'>Grizzchat User Since: <span title='". $row["CREATED_AT"] . "'>". substr($row["CREATED_AT"], 0, -9) . "</span></p>";
