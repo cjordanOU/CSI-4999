@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2021 at 03:30 AM
+-- Generation Time: Nov 24, 2021 at 06:15 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -59,7 +59,8 @@ CREATE TABLE `login_attempts` (
 --
 
 INSERT INTO `login_attempts` (`ATTEMPT`, `TIME`, `SUCCESS`, `USER_ID`) VALUES
-(1, '2021-11-20 17:56:46', 0, 1);
+(1, '2021-11-20 17:56:46', 0, 1),
+(2, '2021-11-21 20:28:35', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`User_Info_USER_ID`, `Posts_ID`, `CONTENT`, `POST_TIME`, `PARENT_THREAD`) VALUES
-(2, 7, '<p>test reply</p>', '2021-11-21 02:28:43', 4);
+(1, 7, '<p>test reply</p>', '2021-11-21 22:24:19', 4),
+(2, 8, '<p>reply here</p>', '2021-11-22 01:01:30', 4),
+(2, 9, '<p>testing 123 testing</p>', '2021-11-22 01:03:00', 4),
+(2, 10, '<p>test link post</p>', '2021-11-22 01:04:32', 4),
+(2, 11, '<p>test 123 link</p>', '2021-11-22 01:04:46', 4),
+(7, 12, '<p>testing reply here</p>', '2021-11-22 16:47:15', 4);
 
 -- --------------------------------------------------------
 
@@ -123,7 +129,11 @@ CREATE TABLE `threads` (
 --
 
 INSERT INTO `threads` (`User_Info_USER_ID`, `Categories_CATEGORIES_ID`, `THREADS_ID`, `THREAD_TITLE`, `THREAD_CONTENT`, `CREATED`, `Views`) VALUES
-(2, 1, 4, 'Test title', '<p>test body</p>', '2021-11-21 02:20:59', 1);
+(1, 1, 4, 'Test title', '<p>test body</p>', '2021-11-21 02:20:59', 1),
+(2, 1, 5, 'Test thread testuser', '<p>test body here</p>', '2021-11-22 00:15:10', 1),
+(2, 1, 6, 'test thread 12345', '<p>body test</p>', '2021-11-22 01:05:54', 1),
+(2, 1, 7, 'Hey Everyone in CSI-4999', '<p>Welcome to our demo. Many features are still in the works but we hope you enjoy our in-development product and are looking forwards to its completion as much as we are.</p>', '2021-11-22 05:36:36', 1),
+(7, 1, 8, 'Hello CSI-4999 demo', '<p>this is the thread body.</p>', '2021-11-22 16:46:33', 1);
 
 -- --------------------------------------------------------
 
@@ -140,17 +150,22 @@ CREATE TABLE `user_info` (
   `EMAIL_ADDRESS` tinytext NOT NULL,
   `CREATED_AT` timestamp NOT NULL DEFAULT current_timestamp(),
   `MAJOR` tinytext NOT NULL,
-  `IMAGE` blob NOT NULL
+  `IMAGE` blob NOT NULL,
+  `GRADUATION_DATE` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='User Account Information';
 
 --
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`USER_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL_ADDRESS`, `CREATED_AT`, `MAJOR`, `IMAGE`) VALUES
-(1, 'ADMIN', 'Password1!', 'Adam', 'In', 'admin@grizzchat.com', '2021-11-09 03:54:50', 'Information_Technology', ''),
-(2, 'testuser', '$2y$10$LOB35vH96UAqMqZEFbACZO83RVnjK22n3Sl5q8BJcnDm2feI6i2eG', 'testfirst', 'testlast', 'test@test.com', '2021-11-20 01:36:18', 'Electrical_Engineering', ''),
-(3, 'jsmith', '$2y$10$FzcuV4sTBWgx7tPu9BaRiO0A2P./.j1OkPVuQyEDRblsxgy1JllD6', 'John', 'Smith', 'jsmith@test.com', '2021-11-20 22:19:13', 'Bioengineering', '');
+INSERT INTO `user_info` (`USER_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL_ADDRESS`, `CREATED_AT`, `MAJOR`, `IMAGE`, `GRADUATION_DATE`) VALUES
+(1, 'ADMIN', 'test_password_not_hashed/salted', 'Adam', 'In', 'admin@grizzchat.com', '2021-11-09 03:54:50', 'Information_Technology', '', '2023'),
+(2, 'testuser', '$2y$10$LOB35vH96UAqMqZEFbACZO83RVnjK22n3Sl5q8BJcnDm2feI6i2eG', 'testfirst', 'testlast', 'test@test.com', '2021-11-20 01:36:18', 'Electrical_Engineering', '', 'Alumni'),
+(3, 'jsmith', '$2y$10$FzcuV4sTBWgx7tPu9BaRiO0A2P./.j1OkPVuQyEDRblsxgy1JllD6', 'John', 'Smith', 'jsmith@test.com', '2021-11-20 22:19:13', 'Bioengineering', '', '2022'),
+(4, 'tester', '$2y$10$Q8dqng7fURzDMNtzNwCPkO2HLLAFQFvyf548BPL3kWMJoeExBbytS', 'firstname', 'lastname', 'tester@test.com', '2021-11-22 00:33:46', 'Bioengineering', '', '2021'),
+(5, 'abcdef', '$2y$10$U/43EPUK0AOry7NtSu9TT.o.tG4Bzm5XMoiCnvpALXDTgjh7wVecy', 'abcdef', 'lastname', 'abcdef@lastname.com', '2021-11-22 01:36:34', 'Information_Technology', '', '2023'),
+(6, 'ctester', '$2y$10$mAl2Fm0PjRK3D9sGQdOeZeIeK23hzBa7WLDyafRuvCOtwH3crMjPy', 'Cam', 'Jordan', 'cam@cam.com', '2021-11-22 15:25:23', 'Information_Technology', '', ''),
+(7, 'camtest', '$2y$10$DtchJwsur2Xncl7TKgKaBe7n9vpDO2/.1j3WQTYHUd0UXkVu3HWkS', 'Testfirst', 'Testlast', 'cam@test.com', '2021-11-22 16:45:09', 'Computer_Engineering', '', '');
 
 --
 -- Indexes for dumped tables
@@ -211,25 +226,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `THREADS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `THREADS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique User ID.', AUTO_INCREMENT=4;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique User ID.', AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
