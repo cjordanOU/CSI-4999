@@ -290,6 +290,21 @@ footer div nav a:hover, footer div address a:hover {
     /* Specify the background image in HTML using the style attribute */
 }
 
+.parallaxBG-vsmall {
+    width: 100%;
+    height: 12em;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-fadeBottom {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(179,171,167,0) 0%, rgba(179,171,167,0) 35%, rgba(37,21,13,.35) 100%);
+}
+
 .parallaxText1 {
     /* Positions the parallaxText to be on top of the parallaxBG div */
     position: absolute;
@@ -314,12 +329,28 @@ footer div nav a:hover, footer div address a:hover {
     text-align: center;
 }
 
-.parallaxText1 h2, .parallaxText1-small , .parallaxText2 h2 {
+.parallaxText1-vsmall {
+    /* Positions the parallaxText to be on top of the parallaxBG div */
+    position: absolute;
+    top: 15em;
+    left: 40em;
+    transform: translate(-145%, -425%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.parallaxText1 h2, .parallaxText1-small , .parallaxText2 h2, .parallaxText1-vsmall {
     /* Header2 Text for parallaxText */
     color: white;
     font-size: 3em;
     text-shadow: 2px 2px 2px #26201F;
     margin-bottom: .25em;
+}
+
+.parallaxText1-vsmall h2 {
+    margin: 0;
 }
 
 .parallaxText1 a {
@@ -340,6 +371,10 @@ footer div nav a:hover, footer div address a:hover {
     background: #704e39;
     -webkit-transition: 0.2s;
     transition: 0.2s;
+}
+
+.settingsImage {
+    background-image: url('../Images/Oakland_Center.jpg');
 }
 
 .profile-page {

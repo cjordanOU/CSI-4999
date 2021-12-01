@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 06:15 PM
+-- Generation Time: Dec 01, 2021 at 08:22 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -65,6 +65,22 @@ INSERT INTO `login_attempts` (`ATTEMPT`, `TIME`, `SUCCESS`, `USER_ID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `MESSAGE_ID` int(11) NOT NULL,
+  `SENDER_ID` int(11) NOT NULL COMMENT 'USER_ID of sender of message',
+  `RECIEVER_ID` int(11) NOT NULL COMMENT 'USER_ID of reciever of message',
+  `MESSAGE_TITLE` tinytext NOT NULL COMMENT 'Title of message',
+  `MESSAGE_CONTENT` text NOT NULL COMMENT 'Main contents of message',
+  `MESSAGE_READ` tinyint(1) NOT NULL COMMENT 'Is message read by reciever',
+  `MESSAGE_TIME` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'when message was sent'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -87,6 +103,34 @@ INSERT INTO `posts` (`User_Info_USER_ID`, `Posts_ID`, `CONTENT`, `POST_TIME`, `P
 (2, 10, '<p>test link post</p>', '2021-11-22 01:04:32', 4),
 (2, 11, '<p>test 123 link</p>', '2021-11-22 01:04:46', 4),
 (7, 12, '<p>testing reply here</p>', '2021-11-22 16:47:15', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_info`
+--
+
+CREATE TABLE `profile_info` (
+  `ABOUT` text NOT NULL,
+  `ABOUT_PRIVACY` enum('private','friends','public') NOT NULL DEFAULT 'public',
+  `LOCATION` tinytext NOT NULL,
+  `LOCATION_PRIVACY` enum('private','friends','public') NOT NULL DEFAULT 'public',
+  `CONTACT_EMAIL` tinytext NOT NULL,
+  `CONTACT_EMAIL_PRIVACY` enum('private','friends','public') NOT NULL DEFAULT 'public',
+  `LINKEDIN` tinytext NOT NULL,
+  `LINKEDIN_PRIVACY` enum('private','friends','public') NOT NULL DEFAULT 'public',
+  `PREFERRED_FONT` enum('default','comic_sans','Times_New_Roman','Helvetica','Tahoma','Garamond','Courier_New') NOT NULL DEFAULT 'default',
+  `DEACTIVATE` tinyint(1) NOT NULL DEFAULT 0,
+  `LINKED_USER_ID` int(11) NOT NULL,
+  `PROFILE_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `profile_info`
+--
+
+INSERT INTO `profile_info` (`ABOUT`, `ABOUT_PRIVACY`, `LOCATION`, `LOCATION_PRIVACY`, `CONTACT_EMAIL`, `CONTACT_EMAIL_PRIVACY`, `LINKEDIN`, `LINKEDIN_PRIVACY`, `PREFERRED_FONT`, `DEACTIVATE`, `LINKED_USER_ID`, `PROFILE_ID`) VALUES
+('Test about 123', 'public', 'Test location', 'public', 'test@test.edu', 'public', 'test.com', 'public', 'default', 0, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -185,12 +229,26 @@ ALTER TABLE `login_attempts`
   ADD KEY `USER_ID` (`USER_ID`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`MESSAGE_ID`),
+  ADD KEY `SENDER_ID` (`SENDER_ID`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`Posts_ID`),
   ADD KEY `posts-users` (`User_Info_USER_ID`),
   ADD KEY `PARENT_THREAD` (`PARENT_THREAD`);
+
+--
+-- Indexes for table `profile_info`
+--
+ALTER TABLE `profile_info`
+  ADD PRIMARY KEY (`PROFILE_ID`),
+  ADD KEY `LINKED_USER_ID` (`LINKED_USER_ID`);
 
 --
 -- Indexes for table `roles`
@@ -229,6 +287,12 @@ ALTER TABLE `login_attempts`
   MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `MESSAGE_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
@@ -251,11 +315,23 @@ ALTER TABLE `user_info`
 --
 
 --
+-- Constraints for table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`SENDER_ID`) REFERENCES `user_info` (`USER_ID`);
+
+--
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts-users` FOREIGN KEY (`User_Info_USER_ID`) REFERENCES `user_info` (`USER_ID`),
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`PARENT_THREAD`) REFERENCES `threads` (`THREADS_ID`);
+
+--
+-- Constraints for table `profile_info`
+--
+ALTER TABLE `profile_info`
+  ADD CONSTRAINT `profile_info_ibfk_1` FOREIGN KEY (`LINKED_USER_ID`) REFERENCES `user_info` (`USER_ID`);
 
 --
 -- Constraints for table `roles`

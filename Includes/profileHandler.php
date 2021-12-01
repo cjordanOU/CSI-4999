@@ -54,3 +54,32 @@
             }
         }
     }
+
+    function displayUsersSettings() {
+        $sql = "SELECT * FROM profile_info WHERE PROFILE_ID={$_SESSION["id"]}";
+        $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
+        $result = $dbConnection-> query($sql);
+
+        if ($result-> num_rows > 0) {
+            while ($row = $result-> fetch_assoc()) {
+                echo "<p>Password section placeholder</p>";
+
+                // About me section
+                echo "<div class='settings-block'>";
+                echo "<label>About Me</label>";
+                if (empty($row["ABOUT"])) {
+                    echo "<textarea name='about'></textarea>";
+                }
+                else {
+                    echo "<textarea name='about'>" . $row["ABOUT"] . "</textarea>";
+                }
+                echo "<select name='about_privacy> title='Privacy settings for your about me description'";
+                echo "</div>";
+                
+                //
+
+            }
+        }
+    }
+
+?>
