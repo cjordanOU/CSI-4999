@@ -73,11 +73,56 @@
                 else {
                     echo "<textarea name='about'>" . $row["ABOUT"] . "</textarea>";
                 }
-                echo "<select name='about_privacy> title='Privacy settings for your about me description'";
-                echo "</div>";
+                echo "<select name='about_privacy> title='Privacy settings for your about me description'>";
+                if ($row["ABOUT_PRIVACY"] == "public") {
+                    echo "<option value='public' selected>Public</option>";
+                }
+                else {
+                    echo "<option value='public'>Public</option>";
+                }
+                if ($row["ABOUT_PRIVACY"] == "friends") {
+                    echo "<option value='friends' selected>Friends only</option>";
+                }
+                else {
+                    echo "<option value='friends'>Friends only</option>";
+                }
+                if ($row["ABOUT_PRIVACY"] == "private") {
+                    echo "<option value='private' selected>Private</option>";
+                }
+                else {
+                    echo "<option value='private'>Private</option>";
+                }
+                echo "</select></div>";
                 
-                //
-
+                // Location section
+                echo "<div class='settings-block'>";
+                echo "<label>Location Me</label>";
+                if (empty($row["LOCATION"])) {
+                    echo "<input type='text name='location'>";
+                }
+                else {
+                    echo "<input type='text name='location' value='"  . $row["LOCATION"] . "'>";
+                }
+                echo "<select name='location_privacy> title='Privacy settings for your about me description'>";
+                if ($row["LOCATION_PRIVACY"] == "public") {
+                    echo "<option value='public' selected>Public</option>";
+                }
+                else {
+                    echo "<option value='public'>Public</option>";
+                }
+                if ($row["LOCATION_PRIVACY"] == "friends") {
+                    echo "<option value='friends' selected>Friends only</option>";
+                }
+                else {
+                    echo "<option value='friends'>Friends only</option>";
+                }
+                if ($row["LOCATION_PRIVACY"] == "private") {
+                    echo "<option value='private' selected>Private</option>";
+                }
+                else {
+                    echo "<option value='private'>Private</option>";
+                }
+                echo "</select></div>";
             }
         }
     }
