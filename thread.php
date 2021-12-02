@@ -33,17 +33,14 @@
             
             <section id="page-container">
                 <main>
-                    <form action = "post-thread.php">
-
-                        <input type="submit" value = "Make a Thread" class="thread-creator">
-
-                    </form>
                     <?php
 
                         echo "<BR>";
-                        $sql = "SELECT * FROM threads 
+                        $tid = $_GET['THREADS_ID'];
+                        $sql = "SELECT * FROM threads
                         INNER JOIN user_info
-                        on threads.User_Info_USER_ID = user_info.USER_ID";
+                        on threads.User_Info_USER_ID = user_info.USER_ID
+                        Where THREADS_ID = $tid";
                        /* INNER JOIN posts
                         on threads.THREADS_ID = posts.PARENT_THREAD
                         inner Join user_info
@@ -53,17 +50,45 @@
                         //$resultCheck = mysqli_num_rows($result);
                         if ($result-> num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
-                                $tid = $row['THREADS_ID'];
                                 echo "<div class = 'block-container'>";
-                                echo "<div class = 'block-body'><h2> <a href ='thread.php?THREADS_ID=$tid'>" . $row["THREAD_TITLE"]."</a></h2><hr>" .$row["THREAD_CONTENT"]. "<p class='post-user'>". $row["USER_NAME"]. "</p> <p class='post-info'>" 
+                                echo "<div class = 'block-body'><h2>" . $row["THREAD_TITLE"]."</a></h2><hr>" .$row["THREAD_CONTENT"]. "<p class='post-user'>". $row["USER_NAME"]. "</p> <p class='post-info'>" 
                                 . $row["CREATED"] . $_SESSION["id"]. "</p>" ;
                                 echo "</div>  <br>";
-                               // echo "<div class = 'block-body'>" . $row["CONTENT"]. $row["USER_NAME"]. " " 
-                               // . $row["POST_TIME"];
+
+                               echo '<form class = "post" action="Includes/replyAct.php?THREADS_ID='.$tid.'" class="POST" method ="POST">
+                               <label for="forumPost"></label>
+                               <br>
+                               <br>
+                               <textarea id="forumPost" name="forumPost" rows="4" cols="50">
+                               </textarea>
+                               <br><br>
+                               <button type="submit" name ="submit" class="thread-reply">Reply</button>
+                               </form>';
+                               
+   
 
 
                             }
+
                         }
+
+                      $tid = $_GET['THREADS_ID'];
+                      $sql = "SELECT * FROM posts
+                      WHERE PARENT_THREAD = $tid";
+                      $result = $dbConnection-> query($sql);
+                      if ($result-> num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $comments_user_id = $row['User_Info_USER_ID'];
+
+                            $sql2 = "SELECT * FROM user_info where USER_ID = $comments_user_id ";
+                            $result2 = mysqli_query($dbConnection, $sql2);
+                            $row2 = mysqli_fetch_assoc($result2);
+                          echo "<div class = 'block-body'>" . $row["CONTENT"]. $row2["USER_NAME"]. " " 
+                          . $row["POST_TIME"];
+
+
+                        }
+                      }
                         
 
                     ?>
