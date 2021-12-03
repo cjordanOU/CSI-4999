@@ -3,7 +3,7 @@
     <head>
         <?php require_once('Includes/metadata.php'); ?>
 
-        <title>Profile - GrizzChat</title>
+        <title>Profile Settings - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
 
         <!-- Styles -->
