@@ -525,7 +525,7 @@ footer div nav a:hover, footer div address a:hover {
     margin-bottom: .5em;
 }
 
-.settings-form input:not(:last-child) {
+.settings-form input:not(:last-child), .settings-confirm-pw {
     width: 25%;
     height: 2.5em;
     border-radius: 6px;

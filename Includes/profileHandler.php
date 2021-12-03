@@ -68,7 +68,7 @@
                 echo "<h4>Change Password</h4><hr>";
                 echo "<label>Current Password</label><input type='password' name='old_password'><br>";
                 echo "<label>New Password</label><input type='password' name='new_password'><br>";
-                echo "<label>Confirm New Password</label><input type='password' name='confirm_new_password'>";
+                echo "<label>Confirm New Password</label><input type='password' name='confirm_new_password' class='settings-confirm-pw'>";
                 echo "</div>";
 
                 // About me section
