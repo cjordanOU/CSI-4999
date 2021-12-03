@@ -253,4 +253,14 @@
         }
     }
 
+    function displayNotifications() {
+        echo "<div class='settings-block'>";
+        echo "<h4>Direct Messages:</h4><hr>";
+        echo "</div>";
+        
+        echo "<div class='settings-block'>";
+        echo "<h4>Replies to my Threads:</h4><hr>";
+        echo "</div>";
+    }
+
 ?>

@@ -548,6 +548,7 @@ footer div nav a:hover, footer div address a:hover {
     border-radius: 6px;
     border-style: solid;
     border-width: 1px;
+    margin-bottom: .5em;
 }
 
 .settings-block:not(:first-child) {
