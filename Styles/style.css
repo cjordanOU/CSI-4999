@@ -511,6 +511,65 @@ footer div nav a:hover, footer div address a:hover {
     margin-bottom: 6.5em;
 }
 
+.settings-form {
+    padding: 0 3.5em;
+}
+
+.settings-form hr {
+    border-color: rgba(37, 30, 27, 0.7);
+    margin-bottom: 1.15em;
+}
+
+.settings-form label {
+    display: block;
+    margin-bottom: .5em;
+}
+
+.settings-form input:not(:last-child) {
+    width: 25%;
+    height: 2.5em;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 1em;
+}
+
+.settings-form select {
+    width: 16.5%;
+    height: 2em;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.settings-form textarea {
+    width: 56.5%;
+    height: 10em;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.settings-block:not(:first-child) {
+    margin-top: 2em;
+}
+
+.settings-submit {
+    margin-top: 2.5em;
+    box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
+    background: #31231A;
+    width: 12.5em;
+    padding: 24px;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    border: none!important;
+    border-radius: 0px!important;
+}
+
+
+
 /* ------ ------ Slideshow Fade effect ------ ------ */
 .fade {
     /* Slideshow fade */
