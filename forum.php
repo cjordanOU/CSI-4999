@@ -33,32 +33,17 @@
             
             <section id="page-container">
                 <main>
-                    <form action = "post-thread.php">
-
-                        <input type="submit" value = "Make a Thread" class="thread-creator">
-
-                    </form>
                     <?php
 
                         echo "<BR>";
-                        $cid = $_GET['Categories'];
-                        $sql = "SELECT * FROM threads
-                        INNER JOIN user_info
-                        on threads.User_Info_USER_ID = user_info.USER_ID
-                        Where Categories_CATEGORIES_ID = $cid";
-                       /* INNER JOIN posts
-                        on threads.THREADS_ID = posts.PARENT_THREAD
-                        inner Join user_info
-                        where posts.User_Info_USER_ID = user_info.USER_ID";*/
-                        //$result = mysqli_query($dbConnection, $sql);
+                        $sql = "SELECT * FROM categories";
                         $result = $dbConnection-> query($sql);
                         //$resultCheck = mysqli_num_rows($result);
                         if ($result-> num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
-                                $tid = $row['THREADS_ID'];
+                                $cid = $row['CATEGORIES_ID'];
                                 echo "<div class = 'block-container'>";
-                                echo "<div class = 'block-body'><h2> <a href ='thread-page.php?THREADS=$tid'>" . $row["THREAD_TITLE"]."</a></h2><hr>" .$row["THREAD_CONTENT"]. "<p class='post-user'>". $row["USER_NAME"]. "</p> <p class='post-info'>" 
-                                . $row["CREATED"] . $_SESSION["id"]. "</p>" ;
+                                echo "<div class = 'block-body'><h2> <a href ='thread.php?Categories=$cid'>" . $row["TITLE"]."</a></h2><hr>" .$row["DESCRIPTION"]. "<p class='post-user'>";
                                 echo "</div>  <br>";
                                // echo "<div class = 'block-body'>" . $row["CONTENT"]. $row["USER_NAME"]. " " 
                                // . $row["POST_TIME"];
