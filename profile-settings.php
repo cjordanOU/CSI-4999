@@ -3,7 +3,7 @@
     <head>
         <?php require_once('Includes/metadata.php'); ?>
 
-        <title>Profile - GrizzChat</title>
+        <title>Profile Settings - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
 
         <!-- Styles -->
@@ -30,8 +30,9 @@
                     </div>
                 </div>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="settings-form">
                     <?php displayUsersSettings(); ?>
+                    <input type='submit' class='settings-submit' name='settings-submit' title='Submit the changes you have made to your account settings'>
                 </form>
             </section>
         

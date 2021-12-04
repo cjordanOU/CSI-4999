@@ -29,8 +29,8 @@
             echo '<a href="profile.php" title="Click here to view your profile" class="header-login button-1">My Profile</a><a href="Includes/signout.php" title="Click here to sign out of your account" class="header-signup button-1 button-dark">Sign Out</a>';
         }
         echo '</div><div class="header-bottom"><nav class="header-container">';
-        echo '<a href="https://moodle.oakland.edu" title="Click here to visit the Oakland University Moodle website"  target="_blank">Moodle</a><section></section><a href="https://mysail.oakland.edu" title="Click here to visit the Oakland University MySail website" target="_blank">MySail</a><section></section><a href="#" title="Placeholder Header Link">Notifications</a>';
-        echo '<section></section><a href="contact.php" title="Click here to visit our Contact Us page">Contact</a><section></section><a href="#" title="Placeholder Header Link">About Us</a>';
+        echo '<a href="https://moodle.oakland.edu" title="Click here to visit the Oakland University Moodle website"  target="_blank">Moodle</a><section></section><a href="https://mysail.oakland.edu" title="Click here to visit the Oakland University MySail website" target="_blank">MySail</a><section></section><a href="notifications.php" title="View your notifications">Notifications</a>';
+        echo '<section></section><a href="contact.php" title="Click here to visit our Contact Us page">Contact</a><section></section><a href="about.php" title="View information about our organization">About Us</a>';
         echo '</nav></div></header>';
     }
 
