@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php require_once('Includes/metadata.php'); ?>
+        <?php
+            require_once('Includes/metadata.php');
+            require_once('Includes/dbConnection.php');
+        ?>
 
         <title>Home - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
@@ -46,7 +49,7 @@
 
                         <img src="Images\Oakland_Center.jpg" alt="Grizz Image" width="720" height="420">  
                     <p>Have a suggestion to improve the app? We'd love to hear from you.</p>
-                    <a href="contact.php" title="Browse our menu">Contact Us</a>
+                    <a href="contact.php" title="Browse our menu" class="button-1">Contact Us</a>
                 </main>
             </section>
             

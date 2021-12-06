@@ -1,4 +1,10 @@
 <?php
+    /* ------------------------------------------------------------------------------------- */
+    // Grizzchat © 2021
+    // User Authentication Script
+    // This file contains the logic displaying and processing user profile settings and information.
+    /* ------------------------------------------------------------------------------------- */
+
     // dbConnection include
     require_once 'Includes/dbConnection.php';
 
@@ -26,7 +32,9 @@
     }
 
     function displayUsersProfile() {
-        $sql = "SELECT * FROM user_info WHERE USER_ID={$_SESSION["id"]}";
+        //$sql = "SELECT * FROM user_info WHERE USER_ID={$_SESSION["id"]}";
+        //$sql = "SELECT * FROM user_info INNER JOIN profile_info on user_info.USER_ID = profile_info.LINKED_USER_ID WHERE user_info.USER_ID={$_SESSION["id"]}";
+        $sql = "SELECT * FROM profile_info INNER JOIN user_info on profile_info.LINKED_USER_ID = user_info.USER_ID WHERE profile_info.LINKED_USER_ID={$_SESSION["id"]}";
         $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
         $result = $dbConnection-> query($sql);
 
@@ -35,7 +43,7 @@
                 $major = str_replace('_', ' ', $row["MAJOR"]);
                 echo "<section class='profile-box'>";
                 echo "<div class='profile-box-image'></div><hr>";
-                echo "<div class='post-box-content'><p title='Username'>". $row["USER_NAME"] ."</p>";
+                echo "<div class='post-box-content'><p title='Username'><b>". $row["USER_NAME"] ."</b></p>";
                 echo "<p title='Major'>". $major . " Major</p>";
                 if ($row["GRADUATION_DATE"] == "Alumni") {
                     echo "<p title='Alumni Status'>OU Alumni</p>";
@@ -50,6 +58,21 @@
                 }
                 echo "<a href='profile-settings.php' title='Change your account settings'><div class='profile-icons'alt='Settings Icon'></div></a>";
                 echo "<p title='User since'>Grizzchat User Since: <span title='". $row["CREATED_AT"] . "'>". substr($row["CREATED_AT"], 0, -9) . "</span></p>";
+                echo "</div>";
+                echo "<div class='post-box-content'><hr>";
+                
+                if ($row["LOCATION_PRIVACY"] == "public") {
+                    echo "<p title='Work location'>". $row["LOCATION"] . "</p>";
+                }
+                if ($row["CONTACT_EMAIL_PRIVACY"] == "public") {
+                    echo "<p title='Contact Email'>". $row["CONTACT_EMAIL"] . "</p>";
+                }
+                if ($row["LINKEDIN_PRIVACY"] == "public") {
+                    echo "<p title='LinkedIn'>". $row["LINKEDIN"] . "</p>";
+                }
+                if ($row["ABOUT_PRIVACY"] == "public") {
+                    echo "<hr><p title='About me' class='about-me'>". $row["ABOUT"] . "</p>";
+                }
                 echo "</div></section>";
             }
         }
@@ -69,6 +92,12 @@
                 echo "<label>Current Password</label><input type='password' name='old_password'><br>";
                 echo "<label>New Password</label><input type='password' name='new_password'><br>";
                 echo "<label>Confirm New Password</label><input type='password' name='confirm_new_password' class='settings-confirm-pw'>";
+                echo "</div>";
+
+                // Profile picture section
+                echo "<div class='settings-block'>";
+                echo "<hr><h4>My Profile Picture</h4>";
+                echo "<input type='file' name='profile-picture' accept='image/png, image/gif, image/jpeg'>";
                 echo "</div>";
 
                 // About me section
@@ -254,13 +283,36 @@
     }
 
     function displayNotifications() {
+        $sql = "SELECT * FROM messages WHERE RECIEVER_ID={$_SESSION["id"]}";
+        //$sql = "SELECT * FROM messages INNER JOIN user_info on messages.RECIEVER_ID = user_info.USER_ID WHERE profile_info.LINKED_USER_ID={$_SESSION["id"]}";
+        $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
+        $result = $dbConnection-> query($sql);
+        
         echo "<div class='settings-block'>";
         echo "<h4>Direct Messages:</h4><hr>";
+        echo "<p>TODO: HAVE SENDER ID SHOW USER_NAME INSTEAD</p>";
+        if ($result-> num_rows > 0) {
+            while ($row = $result-> fetch_assoc()) {
+                echo "<div class='message-container'><div class='message-container-header'>";
+                echo "<p class='message-title'>". $row["MESSAGE_TITLE"] . "</p></div>";
+                echo "<div class='message-contents'>";
+                echo "<p class='message-details'>Sent By:". $row["SENDER_ID"] . "</p>";
+                echo "<p class='message-details'>Sent At:". $row["MESSAGE_TIME"] . "</p>";
+                echo "<p>". $row["MESSAGE_CONTENT"] . "</p></div></div>";
+            }
+        }
+        else {
+            echo "<p>You haven't recieved any Direct Messages yet.</p>";
+        }
         echo "</div>";
         
         echo "<div class='settings-block'>";
         echo "<h4>Replies to my Threads:</h4><hr>";
         echo "</div>";
+    }
+
+    function processUserSettingsChange() {
+        
     }
 
 ?>

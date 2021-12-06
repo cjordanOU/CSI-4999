@@ -24,9 +24,41 @@
         echo '<a href="index.php" title="logo" class="header-logo"><img src="Images/GrizzChat_Logo.png" alt="Grizzchat Logo"></a><input class="header-search" type="search" placeholder="Search..">';
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             echo '<a href="login.php" title="Click here to log in" class="header-login button-1">Login</a><a href="signup.php" title="Click here to sign up" class="header-signup button-1 button-dark">Sign Up</a>';
+            
         }
         else {
+            $sql = "SELECT PREFERRED_FONT FROM profile_info WHERE LINKED_USER_ID={$_SESSION["id"]}";
+            $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
+            $result = $dbConnection-> query($sql);
             echo '<a href="profile.php" title="Click here to view your profile" class="header-login button-1">My Profile</a><a href="Includes/signout.php" title="Click here to sign out of your account" class="header-signup button-1 button-dark">Sign Out</a>';
+            if ($result-> num_rows > 0) {
+                while ($row = $result-> fetch_assoc()) {
+                    if ($row["PREFERRED_FONT"] == "Default") {
+                        // Do nothing
+                    }
+                    if ($row["PREFERRED_FONT"] == "comic_sans") {
+                        echo '<style>* {font-family:"Comic Sans MS"!important;}</style>';
+                    }
+                    if ($row["PREFERRED_FONT"] == "Times_New_Roman") {
+                        echo '<style>* {font-family:"Times New Roman"!important;}</style>';
+                    }
+                    if ($row["PREFERRED_FONT"] == "Helvetica") {
+                        echo '<style>* {font-family:"Helvetica"!important;}</style>';
+                    }
+                    if ($row["PREFERRED_FONT"] == "Tahoma") {
+                        echo '<style>* {font-family:"Tahoma"!important;}</style>';
+                    }
+                    if ($row["PREFERRED_FONT"] == "Garamond") {
+                        echo '<style>* {font-family:"Garamond"!important;}</style>';
+                    }
+                    if ($row["PREFERRED_FONT"] == "Courier_New") {
+                        echo '<style>* {font-family:"Courier New"!important;}</style>';
+                    }
+                }
+
+            }
+
+            
         }
         echo '</div><div class="header-bottom"><nav class="header-container">';
         echo '<a href="https://moodle.oakland.edu" title="Click here to visit the Oakland University Moodle website"  target="_blank">Moodle</a><section></section><a href="https://mysail.oakland.edu" title="Click here to visit the Oakland University MySail website" target="_blank">MySail</a><section></section><a href="notifications.php" title="View your notifications">Notifications</a>';
