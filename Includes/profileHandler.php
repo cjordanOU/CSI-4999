@@ -363,5 +363,39 @@
         }
     }
 
+    function verifyProfile() {
+        $sql = "SELECT * FROM profile_info WHERE LINKED_USER_ID={$_SESSION["id"]}";
+        $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
+        $uid = $_SESSION["id"];
+        $result = $dbConnection-> query($sql);
+
+        if ($result-> num_rows > 0) {
+        }
+        else {
+            /*$createProfileSQL = "INSERT INTO `profile_info` 
+            `ABOUT` = '',
+            `ABOUT_PRIVACY` = 'public',
+            `LOCATION` = '',
+            `LOCATION_PRIVACY` = 'public',
+            `CONTACT_EMAIL` = '',
+            `CONTACT_EMAIL_PRIVACY` = 'public', 
+            `LINKEDIN` = '',
+            `LINKEDIN_PRIVACY` = 'public',
+            `PREFERRED_FONT` = 'default',
+            `DEACTIVATE` = 0,
+            `LINKED_USER_ID`='$uid',
+            `PROFILE_ID`='$uid' ";*/
+            $createProfileSQL = "INSERT INTO profile_info (ABOUT, ABOUT_PRIVACY, LOCATION, LOCATION_PRIVACY, CONTACT_EMAIL, CONTACT_EMAIL_PRIVACY, LINKEDIN, LINKEDIN_PRIVACY, PREFERRED_FONT, DEACTIVATE, LINKED_USER_ID, PROFILE_ID) VALUES ('','public','','public','','public','','public','default',0,'$uid','$uid')";
+
+            $result = $dbConnection-> query($createProfileSQL);
+
+            if ($dbConnection->query($createProfileSQL) === TRUE){
+                echo " New record created successfully";
+                header("location: profile.php");
+            }else{
+                echo "Error: " . $createProfileSQL . "<BR>". $dbConnection->error;
+            }
+        }
+    }
 
 ?>
