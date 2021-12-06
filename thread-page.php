@@ -79,11 +79,11 @@
                       if ($result-> num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
                             $comments_user_id = $row['User_Info_USER_ID'];
-
                             $sql2 = "SELECT * FROM user_info where USER_ID = $comments_user_id ";
                             $result2 = mysqli_query($dbConnection, $sql2);
                             $row2 = mysqli_fetch_assoc($result2);
-                          echo "<div class = 'block-body'>" . $row["CONTENT"]. $row2["USER_NAME"]. " " 
+                            $uid = $row2["USER_ID"];
+                          echo "<div class = 'block-body'>" . $row["CONTENT"]. "<a href ='user-profile.php?$uid'> ". $row2["USER_NAME"]. "</a> " 
                           . $row["POST_TIME"];
 
 
