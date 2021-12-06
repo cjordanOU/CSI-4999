@@ -581,6 +581,10 @@ footer div nav a:hover, footer div address a:hover {
     transition: 0.2s;
 }
 
+.map-small { 
+    height: 15em!important;
+}
+
 .message-container {
     border: 1px solid #31231A;
     border-radius: 6px;
@@ -692,10 +696,5 @@ footer div nav a:hover, footer div address a:hover {
 
 #map { 
     height: 50em;
-    width: 100%;
-}
-
-#map-small { 
-    height: 15em;
     width: 100%;
 }

@@ -50,7 +50,6 @@
                     <aside>
                         <?php displayUsersProfile(); ?>
                     </aside>
-                    <div id="map-small"></div>
                 </section>
             </section>
         

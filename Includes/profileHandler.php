@@ -73,7 +73,8 @@
                 if ($row["ABOUT_PRIVACY"] == "public") {
                     echo "<hr><p title='About me' class='about-me'>". $row["ABOUT"] . "</p>";
                 }
-                echo "</div></section>";
+                echo "</div><hr>";
+                echo "<div id='map' class='map-small'></div></section>";
             }
         }
     }
