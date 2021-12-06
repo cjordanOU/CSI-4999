@@ -109,7 +109,7 @@
                 else {
                     echo "<textarea name='about'>" . $row["ABOUT"] . "</textarea>";
                 }
-                echo "<br><select name='about_privacy> title='Privacy settings for your about me description'>";
+                echo "<br><select name='about_privacy' title='Privacy settings for your about me description'>";
                 if ($row["ABOUT_PRIVACY"] == "public") {
                     echo "<option value='public' selected>Public</option>";
                 }
@@ -135,12 +135,12 @@
                 echo "<div class='settings-block'>";
                 echo "<hr><h4>Work Location</h4>";
                 if (empty($row["LOCATION"])) {
-                    echo "<input type='text name='location'>";
+                    echo "<input type='text' name='location'>";
                 }
                 else {
-                    echo "<input type='text name='location' value='"  . $row["LOCATION"] . "'>";
+                    echo "<input type='text' name='location' value='"  . $row["LOCATION"] . "'>";
                 }
-                echo "<br><select name='location_privacy> title='Privacy settings for your about me description'>";
+                echo "<br><select name='location_privacy' title='Privacy settings for your about me description'>";
                 if ($row["LOCATION_PRIVACY"] == "public") {
                     echo "<option value='public' selected>Public</option>";
                 }
@@ -166,12 +166,12 @@
                 echo "<div class='settings-block'>";
                 echo "<hr><h4>Contact Email</h4>";
                 if (empty($row["CONTACT_EMAIL"])) {
-                    echo "<input type='text name='contact_email'>";
+                    echo "<input type='text' name='contact_email'>";
                 }
                 else {
-                    echo "<input type='text name='contact_email' value='"  . $row["CONTACT_EMAIL"] . "'>";
+                    echo "<input type='text' name='contact_email' value='"  . $row["CONTACT_EMAIL"] . "'>";
                 }
-                echo "<br><select name='contact_email_privacy> title='Privacy settings for your about me description'>";
+                echo "<br><select name='contact_email_privacy' title='Privacy settings for your about me description'>";
                 if ($row["CONTACT_EMAIL_PRIVACY"] == "public") {
                     echo "<option value='public' selected>Public</option>";
                 }
@@ -197,12 +197,12 @@
                 echo "<div class='settings-block'>";
                 echo "<hr><h4>My LinkedIn</h4>";
                 if (empty($row["LINKEDIN"])) {
-                    echo "<input type='text name='linkedin'>";
+                    echo "<input type='text' name='linkedin'>";
                 }
                 else {
-                    echo "<input type='text name='linkedin' value='"  . $row["LINKEDIN"] . "'>";
+                    echo "<input type='text' name='linkedin' value='"  . $row["LINKEDIN"] . "'>";
                 }
-                echo "<br><select name='linkedin_privacy> title='Privacy settings for displaying your LinkedIn profile.'>";
+                echo "<br><select name='linkedin_privacy' title='Privacy settings for displaying your LinkedIn profile.'>";
                 if ($row["LINKEDIN_PRIVACY"] == "public") {
                     echo "<option value='public' selected>Public</option>";
                 }
@@ -227,7 +227,7 @@
                 // Preferred Font section
                 echo "<div class='settings-block'>";
                 echo "<hr><h4>Preferred Global Font</h4>";
-                echo "<select name='preferred_font'> title='Your preferred global font used across the website.'>";
+                echo "<select name='preferred_font' title='Your preferred global font used across the website.'>";
                 // Default Font
                 if ($row["PREFERRED_FONT"] == "default") {
                     echo "<option value='default' selected>Default</option>";
@@ -312,7 +312,55 @@
     }
 
     function processUserSettingsChange() {
-        
+        // Define/Initialize variables
+        $about = "";
+        $about_privacy = "";
+        $location = "";
+        $location_privacy = "";
+        $contact_email = "";
+        $contact_email_privacy = "";
+        $linkedin = "";
+        $linkedin_privacy = "";
+        $preferred_font = "";
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $about = trim($_POST["about"]);
+            $about_privacy = trim($_POST["about_privacy"]);
+            $location = trim($_POST["location"]);
+            $location_privacy = trim($_POST["location_privacy"]);
+            $contact_email = trim($_POST["contact_email"]);
+            $contact_email_privacy = trim($_POST["contact_email_privacy"]);
+            $linkedin = trim($_POST["linkedin"]);
+            $linkedin_privacy = trim($_POST["linkedin_privacy"]);
+            $preferred_font = trim($_POST["preferred_font"]);
+
+            // Prepare an insert statement for what is going to be passed to the DB.
+            $uid = $_SESSION["id"];
+            $dbConnection = $GLOBALS['dbConnection'];
+            
+            $sql = "UPDATE `profile_info` SET 
+                `ABOUT` = '$about',
+                `ABOUT_PRIVACY` = '$about_privacy',
+                `LOCATION` = '$location',
+                `LOCATION_PRIVACY` = '$location_privacy',
+                `CONTACT_EMAIL` = '$contact_email',
+                `CONTACT_EMAIL_PRIVACY` = '$contact_email_privacy', 
+                `LINKEDIN` = '$linkedin',
+                `LINKEDIN_PRIVACY` = '$linkedin_privacy',
+                `PREFERRED_FONT` = '$preferred_font'
+                WHERE LINKED_USER_ID={$_SESSION["id"]}";
+            
+            if ($dbConnection->query($sql) === TRUE){
+                echo " New record created successfully";
+                echo $sql;
+                header("location: profile.php");
+            }else{
+                echo "Error: " . $sql . "<BR>". $dbConnection->error;
+            }
+            
+            $dbConnection ->close();
+        }
     }
+
 
 ?>
