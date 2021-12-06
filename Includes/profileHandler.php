@@ -398,4 +398,9 @@
         }
     }
 
+    function checkIfGraduated() {
+        // If users graduation date is approaching, have a pop-up ask if the user has graduated.
+        // If the user hits graduate, their role is switched to alumni.
+    }
+
 ?>
