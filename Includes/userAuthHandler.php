@@ -149,6 +149,7 @@
         $usernameError = "";
         $passwordError = "";
         $confirmPasswordError = "";
+        $grad_date = "";
 
         // Processing form data when form is submitted
         if($_SERVER["REQUEST_METHOD"] == "POST"){   
@@ -183,13 +184,14 @@
             $lastName = trim($_POST["lastname"]);
             $email = trim($_POST["email"]);
             $major = trim($_POST["major"]);
+            $grad_date = trim($_POST["graduation_date"]);
             
             // Prepare an insert statement for what is going to be passed to the DB.
-            $sql = "INSERT INTO user_info (`USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL_ADDRESS`, `MAJOR`) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO user_info (`USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL_ADDRESS`, `MAJOR`,`GRADUATION_DATE`) VALUES (?,?,?,?,?,?,?)";
         
             if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $sql)){
                  // Bind variables to the prepared statement as parameters (Security Reasons).
-                mysqli_stmt_bind_param($stmt, "ssssss", $param_username, $param_password, $firstName, $lastName, $email, $major);
+                mysqli_stmt_bind_param($stmt, "sssssss", $param_username, $param_password, $firstName, $lastName, $email, $major, $grad_date);
 
                 // Set parameters
                 // We are using a php function called password_hash in order to hash our passwords in the database, which makes it so if an attacker~

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php require_once('Includes/metadata.php'); ?>
+        <?php
+            require_once('Includes/metadata.php');
+            require_once('Includes/dbConnection.php');
+        ?>
 
         <title>Maps - GrizzChat</title>
         <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">

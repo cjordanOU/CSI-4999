@@ -18,6 +18,7 @@
             displayHeader();
             displaySidebarNavigation();
             loginCheckRedirect();
+            processUserSettingsChange();
         ?>
 
         <section id="page-content">
@@ -32,7 +33,7 @@
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="settings-form">
                     <?php displayUsersSettings(); ?>
-                    <input type='submit' class='settings-submit' name='settings-submit' title='Submit the changes you have made to your account settings'>
+                    <input type='submit' class='settings-submit' name='settings-submit' title='Submit the changes you have made to your account settings' value="Save All Changes">
                 </form>
             </section>
         

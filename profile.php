@@ -17,6 +17,7 @@
             require_once('Includes/profileHandler.php');
             displayHeader();
             displaySidebarNavigation();
+            verifyProfile();
             loginCheckRedirect();
         ?>
 
@@ -50,7 +51,6 @@
                     <aside>
                         <?php displayUsersProfile(); ?>
                     </aside>
-                    <div id="map-small"></div>
                 </section>
             </section>
         

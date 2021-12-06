@@ -408,6 +408,11 @@ footer div nav a:hover, footer div address a:hover {
     margin: 0;
 }
 
+.profile-box .post-box-content p {
+    margin-bottom: 0;
+    margin-top: .15em;
+}
+
 .profile-box {
     width: 92.5%;
     padding-bottom: 4px;
@@ -556,6 +561,7 @@ footer div nav a:hover, footer div address a:hover {
 }
 
 .settings-submit {
+    cursor: pointer;
     margin-top: 2.5em;
     box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
     background: #31231A;
@@ -569,7 +575,41 @@ footer div nav a:hover, footer div address a:hover {
     border-radius: 0px!important;
 }
 
+.settings-submit:hover {
+    background: #704e39;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
 
+.map-small { 
+    height: 15em!important;
+}
+
+.message-container {
+    border: 1px solid #31231A;
+    border-radius: 6px;
+    width: 45em;
+    margin-left: 3em;
+}
+
+.message-container-header {
+    background: #31231A;
+    padding: .55em;
+}
+
+.message-title {
+    margin: 0;
+    color: whitesmoke;
+}
+
+.message-contents {
+    padding: .55em;
+}
+
+.message-contents p {
+    margin-bottom: .25em;
+    margin-top: .125em;
+}
 
 /* ------ ------ Slideshow Fade effect ------ ------ */
 .fade {
@@ -656,10 +696,5 @@ footer div nav a:hover, footer div address a:hover {
 
 #map { 
     height: 50em;
-    width: 100%;
-}
-
-#map-small { 
-    height: 15em;
     width: 100%;
 }
