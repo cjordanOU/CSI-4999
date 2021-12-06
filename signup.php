@@ -49,7 +49,7 @@
                                     <option value="Bioengineering">Bioengineering</option>
                                     <option value="Computer_Engineering">Computer Engineering</option>
                                     <option value="Computer_Science">Computer Science
-                                    <option value="Electrical_EngineeringO">Electrical Engineering</option>
+                                    <option value="Electrical_Engineering">Electrical Engineering</option>
                                     <option value="Engineering_Sciences">Engineering Sciences</option>
                                     <option value="Industrial_Systems">Industrial Systems</option>
                                     <option value="Information_Technology">Information Technology</option>
