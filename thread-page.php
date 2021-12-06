@@ -50,8 +50,9 @@
                         //$resultCheck = mysqli_num_rows($result);
                         if ($result-> num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
+                                $uid = $row["USER_ID"];
                                 echo "<div class = 'block-container'>";
-                                echo "<div class = 'block-body'><h2>" . $row["THREAD_TITLE"]."</a></h2><hr>" .$row["THREAD_CONTENT"]. "<p class='post-user'>". $row["USER_NAME"]. "</p> <p class='post-info'>" 
+                                echo "<div class = 'block-body'><h2>" . $row["THREAD_TITLE"]."</a></h2><hr>" .$row["THREAD_CONTENT"]. "<p class='post-user'> <a href ='user-profile.php?$uid'>". $row["USER_NAME"]. "</a> " ."</p> <p class='post-info'> " 
                                 . $row["CREATED"] . $_SESSION["id"]. "</p>" ;
                                 echo "</div>  <br>";
 
