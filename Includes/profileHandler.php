@@ -62,7 +62,7 @@
                 echo "<div class='post-box-content'><hr>";
                 
                 if ($row["LOCATION_PRIVACY"] == "public") {
-                    echo "<p title='Work location'>". $row["LOCATION"] . "</p>";
+                    echo "<p title='Work location' id='work-location'>". $row["LOCATION"] . "</p>";
                 }
                 if ($row["CONTACT_EMAIL_PRIVACY"] == "public") {
                     echo "<p title='Contact Email'>". $row["CONTACT_EMAIL"] . "</p>";
