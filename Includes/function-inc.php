@@ -66,8 +66,39 @@
     }
     $dbConnection ->close();
 
-    header("location: ../thread.php?THREADS_ID=$tid");
+    header("location: ../thread-page.php?THREADS=$tid");
     exit();
+  }
+
+  function createMess($dbConnection,  $sUID, $rUID, $Mess){
+    $sql="INSERT INTO messages (SENDER_ID, RECIEVER_ID, MESSAGE_CONTENT, MESSAGE_READ, MESSAGE_TIME)
+    VALUES ('$sUID', '$rUID', '$Mess', '0', CURRENT_TIMESTAMP )";
+
+  if ($dbConnection->query($sql) === TRUE){
+    echo " New record created successfully";
+  }else{
+    echo "Error: " . $sql . "<BR>". $dbConnection->error;
+
+  }
+  $dbConnection ->close();
+
+  header("location: ../message.php?userid=$rUID");
+  exit();
+
+  }
+
+  function emptyMess($Mess){
+    $result;
+  
+    if (empty($Mess)){
+      $result = true;
+  
+    }else{
+      $result = false;
+  
+    }
+  
+    return $result; 
   }
 
 ?>
