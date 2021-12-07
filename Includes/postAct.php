@@ -5,6 +5,7 @@
 		$postMess = $_POST['forumPost'];
 		$postTitle = $_POST['title'];
 		$uid = $_SESSION["id"];
+		$cid = $_GET["Categories"];
 		include_once 'dbConnection.php';
 		include_once 'function-inc.php';
 		
@@ -13,12 +14,12 @@
 			exit();
 		}
 
-		createPost($dbConnection, $uid, $postMess, $postTitle);
+		createPost($dbConnection, $uid, $cid, $postMess, $postTitle);
 
 	}
 	
 	else{
-		header("location: ../posts.php");
+		header("location ../thread.php?");
 		exit();
 	}
 ?>

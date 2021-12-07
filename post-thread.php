@@ -35,7 +35,10 @@
         <main>
           <h1 class="thread-title">Create A New Thread on GrizzChat</h1>
 
-          <form class = "post" action="Includes/postAct.php" class="POST" method ="POST">
+          <?php
+          $cid = $_GET["Categories"];
+          
+          echo '<form class = "post" action="Includes/postAct.php?Categories='.$cid.'" class="POST" method ="POST">
           <label for="forumPost"></label>
           <br>
           <textarea id="title" name="title" placeholder="Enter your thread title here." cols="35"></textarea>
@@ -45,8 +48,9 @@
             </textarea>
             <br><br>
             <button type="submit" class="btn btn-secondary thread-reply" name ="submit">Submit</button>
-          </form>
-          <?php
+          </form>';
+
+
             if(isset($_GET["error"])){
               if ($_GET["error"] == "emptyPost"){
                 echo"<p style='color: #B22222;'>Fill in all fields</p>";

@@ -33,12 +33,11 @@
             
             <section id="page-container">
                 <main>
-                    <form action = "post-thread.php">
-
-                        <input type="submit" value = "Make a Thread" class="thread-creator">
-
-                    </form>
                     <?php
+                      $cid = $_GET['Categories']; 
+                      echo  '<form action = "post-thread.php?Categories='.$cid.'" class="POST" method ="POST">
+                        <input type="submit" value = "Make a Thread" class="thread-creator">
+                        </form>';
 
                         echo "<BR>";
                         $cid = $_GET['Categories'];

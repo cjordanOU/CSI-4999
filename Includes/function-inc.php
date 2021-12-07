@@ -22,10 +22,10 @@
     return $result; 
   }
   
-  function createPost($dbConnection, $uid, $postMess, $postTitle){
+  function createPost($dbConnection, $uid, $cid, $postMess,  $postTitle){
   
     $sql = "INSERT INTO threads (User_Info_USER_ID, Categories_CATEGORIES_ID, THREAD_TITLE, THREAD_CONTENT, CREATED, Views)
-    VALUES ('$uid', '1', '$postTitle', '$postMess', CURRENT_TIMESTAMP, '1') ";
+    VALUES ('$uid', '$cid', '$postTitle', '$postMess', CURRENT_TIMESTAMP, '1') ";
   
     if ($dbConnection ->query($sql) === TRUE){
       echo " New record created successfully";
@@ -35,7 +35,7 @@
     }
     $dbConnection ->close();
   
-    header("location: ../posts.php?error=none");
+    header("location: ../thread.php?Categories=$cid");
     exit();
   }
 
