@@ -6,44 +6,28 @@
             require_once('Includes/dbConnection.php');
         ?>
 
-        <!-- Styles -->
+        <!-- Styles  border: 2px solid #dedede; -->
         <link href="Styles/style.css" rel="stylesheet">
         <style>
 
 
         .container {
-          border: 2px solid #dedede;
           background-color: #f1f1f1;
           border-radius: 5px;
           padding: 10px;
           margin: 10px 0;
+          text-align: right;
+          width:100%;
         }
 
-        .darker {
-          border-color: #ccc;
-          background-color: #ddd;
-        }
+
 
         .container::after {
           content: "";
           clear: both;
           display: table;
-        }
 
-        .container img {
-          float: left;
-          max-width: 60px;
-          width: 100%;
-          margin-right: 20px;
-          border-radius: 50%;
         }
-
-        .container img.right {
-          float: right;
-          margin-left: 20px;
-          margin-right:0;
-        }
-
         .time-right {
           float: right;
           color: #aaa;
@@ -53,10 +37,31 @@
           float: left;
           color: #999;
         }
+
+        .message{
+          
+          border: 2px solid #dedede;
+          display: inline-block;
+          padding:5px;
+          border-radius: 10px;
+          max width: 70%;
+        }
+        .darker{
+          
+          padding: 10px;
+          margin: 10px 0;
+          border-color: #ccc;
+          text-align: left;
+
+
+
+        }
+
     </style>
     </head>
     <body>
         <section id="background-gradient"></section>
+        
         <?php
             require_once('Includes/page_elements.php');
             displayHeader();
@@ -79,11 +84,19 @@
                     $result = $dbConnection-> query($sql);
                       if ($result-> num_rows > 0) {
                           while($row = $result->fetch_assoc()) {
-                            echo "<div class='container'>"
-                            . $row['MESSAGE_CONTENT']. "
-                            <span class='time-right'>". $row['MESSAGE_TIME'] ."</span>
+                            if ($row['SENDER_ID'] == $_SESSION["id"]){
+                            echo "<div class='container'>  <p class ='message'>"
+                            . $row['MESSAGE_CONTENT']. "<br>". "<span class='time-right'>". $row['MESSAGE_TIME'] ."</span></p>
+                            
                             </div>
                           ";
+                            } else   {
+                              echo "<div class='container darker'> <p class ='message darker'>"
+                              . $row['MESSAGE_CONTENT']."<br> ".  " <span class='time-left'>". $row['MESSAGE_TIME'] ."</span></p>
+                              
+                              </div>
+                            ";
+                            }
                           }
 
                       }       
