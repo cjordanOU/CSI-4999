@@ -206,6 +206,7 @@
                     header("location: login.php");
                 } else{
                     echo "Something went wrong. Please try again later. [Error UA102]";
+                    echo "ERROR: <BR>". $GLOBALS['dbConnection']->error;
                 }
             }
         }

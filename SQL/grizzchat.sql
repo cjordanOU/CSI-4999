@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 07:17 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 07, 2021 at 11:35 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,7 +61,8 @@ CREATE TABLE `login_attempts` (
 INSERT INTO `login_attempts` (`ATTEMPT`, `TIME`, `SUCCESS`, `USER_ID`) VALUES
 (1, '2021-11-20 17:56:46', 0, 1),
 (2, '2021-11-21 20:28:35', 0, 2),
-(3, '2021-12-03 03:54:07', 0, 2);
+(3, '2021-12-06 21:33:16', 0, 1),
+(4, '2021-12-07 16:43:23', 0, 8);
 
 -- --------------------------------------------------------
 
@@ -79,12 +80,19 @@ CREATE TABLE `messages` (
   `MESSAGE_TIME` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'when message was sent'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `messages`
+-- Table structure for table `passwdreset`
 --
 
-INSERT INTO `messages` (`MESSAGE_ID`, `SENDER_ID`, `RECIEVER_ID`, `MESSAGE_TITLE`, `MESSAGE_CONTENT`, `MESSAGE_READ`, `MESSAGE_TIME`) VALUES
-(1, 7, 2, 'This is the first test message title.', 'lorem ipsum message content goes here.', 0, '2021-12-05 06:33:23');
+CREATE TABLE `passwdreset` (
+  `resetID` int(11) NOT NULL,
+  `resetEmail` text NOT NULL,
+  `resetSelector` text NOT NULL,
+  `resetToken` longtext NOT NULL,
+  `resetExpires` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,8 +118,7 @@ INSERT INTO `posts` (`User_Info_USER_ID`, `Posts_ID`, `CONTENT`, `POST_TIME`, `P
 (2, 9, '<p>testing 123 testing</p>', '2021-11-22 01:03:00', 4),
 (2, 10, '<p>test link post</p>', '2021-11-22 01:04:32', 4),
 (2, 11, '<p>test 123 link</p>', '2021-11-22 01:04:46', 4),
-(7, 12, '<p>testing reply here</p>', '2021-11-22 16:47:15', 4),
-(2, 13, '<p>testing</p>', '2021-12-03 08:44:44', 8);
+(7, 12, '<p>testing reply here</p>', '2021-11-22 16:47:15', 4);
 
 -- --------------------------------------------------------
 
@@ -139,9 +146,7 @@ CREATE TABLE `profile_info` (
 --
 
 INSERT INTO `profile_info` (`ABOUT`, `ABOUT_PRIVACY`, `LOCATION`, `LOCATION_PRIVACY`, `CONTACT_EMAIL`, `CONTACT_EMAIL_PRIVACY`, `LINKEDIN`, `LINKEDIN_PRIVACY`, `PREFERRED_FONT`, `DEACTIVATE`, `LINKED_USER_ID`, `PROFILE_ID`) VALUES
-('Test about 123 about me', 'public', 'Test location', 'public', 'test@test.edu', 'public', 'test.com', 'public', 'default', 0, 2, 2),
-('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 7, 7),
-('', 'public', '', 'public', '', 'public', '', 'public', 'comic_sans', 0, 8, 8);
+('Test about 123', 'public', 'Test location', 'public', 'test@test.edu', 'public', 'test.com', 'public', 'default', 0, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -221,7 +226,9 @@ INSERT INTO `user_info` (`USER_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST
 (5, 'abcdef', '$2y$10$U/43EPUK0AOry7NtSu9TT.o.tG4Bzm5XMoiCnvpALXDTgjh7wVecy', 'abcdef', 'lastname', 'abcdef@lastname.com', '2021-11-22 01:36:34', 'Information_Technology', '', '2023'),
 (6, 'ctester', '$2y$10$mAl2Fm0PjRK3D9sGQdOeZeIeK23hzBa7WLDyafRuvCOtwH3crMjPy', 'Cam', 'Jordan', 'cam@cam.com', '2021-11-22 15:25:23', 'Information_Technology', '', ''),
 (7, 'camtest', '$2y$10$DtchJwsur2Xncl7TKgKaBe7n9vpDO2/.1j3WQTYHUd0UXkVu3HWkS', 'Testfirst', 'Testlast', 'cam@test.com', '2021-11-22 16:45:09', 'Computer_Engineering', '', ''),
-(8, 'gradtest', '$2y$10$OpJC99iLFlAwNi5J9AxXZO0jj1tprAJwVzBZHo8yYPdc4kQ.mccFK', 'gradtest', 'boof', 'tester@tester.edu', '2021-12-06 10:21:10', 'Computer_Engineering', '', '2021');
+(8, '2floofy4u', '$2y$10$J9txf9VH9fbhkaoFj1yCc.IMjaB.9/4Ftq4IOUBttAcDAAvIdZly6', 'flooftest', 'flooftest', 'dmbrown@oakland.edu', '2021-12-01 07:55:43', 'Information_Technology', '', ''),
+(9, 'ADMIN123', '$2y$10$AA0MC/J2prcYkgGyNfa/3.SrIz2ik4OzY6Ga70qxZ.9oNEa.fS/Mm', 'Adam', 'In', 'CSI4999.FA21@gmail.com', '2021-12-07 03:01:45', 'Information_Technology', '', ''),
+(10, 'lefloof', '$2y$10$V8Ur5SUxOPlHmJBp6E3r5OdwpF0pGL7Y34uLgLtkVCTrsaeDJwq9W', 'flooftest2', 'flooftest2', 'browndenm110@gmail.com', '2021-12-07 18:43:39', 'Information_Technology', '', '');
 
 --
 -- Indexes for dumped tables
@@ -245,8 +252,13 @@ ALTER TABLE `login_attempts`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`MESSAGE_ID`),
-  ADD KEY `SENDER_ID` (`SENDER_ID`),
-  ADD KEY `RECIEVER_ID` (`RECIEVER_ID`);
+  ADD KEY `SENDER_ID` (`SENDER_ID`);
+
+--
+-- Indexes for table `passwdreset`
+--
+ALTER TABLE `passwdreset`
+  ADD PRIMARY KEY (`resetID`);
 
 --
 -- Indexes for table `posts`
@@ -297,19 +309,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `MESSAGE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `MESSAGE_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `passwdreset`
+--
+ALTER TABLE `passwdreset`
+  MODIFY `resetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -321,7 +339,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique User ID.', AUTO_INCREMENT=9;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique User ID.', AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -331,8 +349,7 @@ ALTER TABLE `user_info`
 -- Constraints for table `messages`
 --
 ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`SENDER_ID`) REFERENCES `user_info` (`USER_ID`),
-  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`RECIEVER_ID`) REFERENCES `user_info` (`USER_ID`);
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`SENDER_ID`) REFERENCES `user_info` (`USER_ID`);
 
 --
 -- Constraints for table `posts`
