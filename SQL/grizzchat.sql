@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 11:35 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Dec 08, 2021 at 04:29 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CATEGORIES_ID`, `TITLE`, `DESCRIPTION`, `DATE`) VALUES
-(1, 'Introduction', 'Introduce yourself.', '2021-11-21 02:20:53');
+(1, 'Introduction', 'Introduce yourself.', '2021-11-21 02:20:53'),
+(2, 'Alumni', 'A place for OU Alumni to meet and interact with eachother.', '2021-12-08 14:57:37'),
+(3, 'Mentorship', 'A place where current OU students and Alumni can go to meet and discuss mentorship opportunities.', '2021-12-08 14:57:37'),
+(4, 'Computer Science', 'All things Computer Science related.', '2021-12-08 14:57:37'),
+(5, 'Information Technology', 'All things IT related.', '2021-12-08 14:57:37'),
+(6, 'Off Topic', 'All off topic discussions should go here.', '2021-12-08 14:57:37');
 
 -- --------------------------------------------------------
 
@@ -62,7 +67,12 @@ INSERT INTO `login_attempts` (`ATTEMPT`, `TIME`, `SUCCESS`, `USER_ID`) VALUES
 (1, '2021-11-20 17:56:46', 0, 1),
 (2, '2021-11-21 20:28:35', 0, 2),
 (3, '2021-12-06 21:33:16', 0, 1),
-(4, '2021-12-07 16:43:23', 0, 8);
+(4, '2021-12-07 16:43:23', 0, 8),
+(5, '2021-12-08 09:51:19', 0, 1),
+(6, '2021-12-08 09:51:40', 0, 1),
+(7, '2021-12-08 09:58:28', 0, 11),
+(8, '2021-12-08 09:59:37', 0, 11),
+(9, '2021-12-08 09:59:45', 0, 11);
 
 -- --------------------------------------------------------
 
@@ -94,6 +104,13 @@ CREATE TABLE `passwdreset` (
   `resetExpires` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `passwdreset`
+--
+
+INSERT INTO `passwdreset` (`resetID`, `resetEmail`, `resetSelector`, `resetToken`, `resetExpires`) VALUES
+(36, 'cjordan@oakland.edu', '2797e58921717d99', '$2y$10$7ScctzFB685kXg/HUmZiaOIQSxKshEh025pBEwhqOMUS2epkWVd3O', '1638971891');
+
 -- --------------------------------------------------------
 
 --
@@ -118,7 +135,10 @@ INSERT INTO `posts` (`User_Info_USER_ID`, `Posts_ID`, `CONTENT`, `POST_TIME`, `P
 (2, 9, '<p>testing 123 testing</p>', '2021-11-22 01:03:00', 4),
 (2, 10, '<p>test link post</p>', '2021-11-22 01:04:32', 4),
 (2, 11, '<p>test 123 link</p>', '2021-11-22 01:04:46', 4),
-(7, 12, '<p>testing reply here</p>', '2021-11-22 16:47:15', 4);
+(7, 12, '<p>testing reply here</p>', '2021-11-22 16:47:15', 4),
+(11, 13, '<p>OK Boomer.</p>', '2021-12-08 15:00:07', 9),
+(2, 14, '<p>Yup.</p>', '2021-12-08 15:00:36', 9),
+(11, 15, '<p>Cool beans my dude.</p>', '2021-12-08 15:04:13', 12);
 
 -- --------------------------------------------------------
 
@@ -146,7 +166,16 @@ CREATE TABLE `profile_info` (
 --
 
 INSERT INTO `profile_info` (`ABOUT`, `ABOUT_PRIVACY`, `LOCATION`, `LOCATION_PRIVACY`, `CONTACT_EMAIL`, `CONTACT_EMAIL_PRIVACY`, `LINKEDIN`, `LINKEDIN_PRIVACY`, `PREFERRED_FONT`, `DEACTIVATE`, `LINKED_USER_ID`, `PROFILE_ID`) VALUES
-('Test about 123', 'public', 'Test location', 'public', 'test@test.edu', 'public', 'test.com', 'public', 'default', 0, 2, 2);
+('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 1, 1),
+('Test about 123', 'public', 'Test location', 'public', 'test@test.edu', 'public', 'test.com', 'public', 'default', 0, 2, 2),
+('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 3, 3),
+('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 4, 4),
+('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 5, 5),
+('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 6, 6),
+('', 'public', '', 'public', '', 'public', '', 'public', 'default', 0, 7, 7),
+('My name is Cameron Jordan and I am currently a student at Oakland University. I will be graduating in the Winter 2022 semester with a bachelors of science in Information Technology.', 'public', 'Auburn Hills, MI', 'public', 'cjordan@oakland.edu', 'public', 'https://www.linkedin.com/in/cameron-jordan-5b87b614a/', 'public', 'default', 0, 11, 11),
+('I graduated from OU in 2006.', 'public', 'Rochester Hills, MI', 'public', 'OUAlumni2006@gmail.com', 'public', 'linkedin.com', 'friends', 'Tahoma', 0, 12, 12),
+('', 'public', 'Amogus Ohio', 'public', 'redsus@gmail.com', 'public', 'red_sus', 'friends', 'comic_sans', 0, 13, 13);
 
 -- --------------------------------------------------------
 
@@ -193,7 +222,14 @@ INSERT INTO `threads` (`User_Info_USER_ID`, `Categories_CATEGORIES_ID`, `THREADS
 (2, 1, 5, 'Test thread testuser', '<p>test body here</p>', '2021-11-22 00:15:10', 1),
 (2, 1, 6, 'test thread 12345', '<p>body test</p>', '2021-11-22 01:05:54', 1),
 (2, 1, 7, 'Hey Everyone in CSI-4999', '<p>Welcome to our demo. Many features are still in the works but we hope you enjoy our in-development product and are looking forwards to its completion as much as we are.</p>', '2021-11-22 05:36:36', 1),
-(7, 1, 8, 'Hello CSI-4999 demo', '<p>this is the thread body.</p>', '2021-11-22 16:46:33', 1);
+(7, 1, 8, 'Hello CSI-4999 demo', '<p>this is the thread body.</p>', '2021-11-22 16:46:33', 1),
+(12, 6, 9, 'Did anyone else see that thing that happened last night?', '<p>As the title above says - that stuff was crazy.</p>', '2021-12-08 14:58:13', 1),
+(2, 3, 10, 'Looking for a mentor? Look no further.', '<p>I am happy to announce that I am now taking mentees from Oakland University, reach out to me through my profile or this thread if you are interested. Thanks.</p>', '2021-12-08 15:01:38', 1),
+(2, 1, 11, 'Hi folks', '<p>This is testuser here, the totally real CSI-4999 student who is not sus.</p>', '2021-12-08 15:02:34', 1),
+(12, 2, 12, 'I am an OU Alumni', '<p>That is all... thanks for reading.</p>', '2021-12-08 15:03:54', 1),
+(13, 2, 13, 'Is this how I make one of these new thread thingies?', '<p>Back in my day the only threads we had were from our clothes.</p>', '2021-12-08 15:06:39', 1),
+(13, 4, 14, 'Computer science is interesting right?', '<p>How do computers even work? magic? who knows?</p>', '2021-12-08 15:16:12', 1),
+(11, 5, 15, 'IT Growth', '<p>It\'s cool how IT is a rapidly growing field. I think our experience and skills we have gained at OU will put us at an advantage over others in this field which will be good for our careers. Does anyone else agree?</p>', '2021-12-08 15:20:45', 1);
 
 -- --------------------------------------------------------
 
@@ -210,7 +246,6 @@ CREATE TABLE `user_info` (
   `EMAIL_ADDRESS` tinytext NOT NULL,
   `CREATED_AT` timestamp NOT NULL DEFAULT current_timestamp(),
   `MAJOR` tinytext NOT NULL,
-  `IMAGE` blob NOT NULL,
   `GRADUATION_DATE` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='User Account Information';
 
@@ -218,17 +253,20 @@ CREATE TABLE `user_info` (
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`USER_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL_ADDRESS`, `CREATED_AT`, `MAJOR`, `IMAGE`, `GRADUATION_DATE`) VALUES
-(1, 'ADMIN', 'test_password_not_hashed/salted', 'Adam', 'In', 'admin@grizzchat.com', '2021-11-09 03:54:50', 'Information_Technology', '', '2023'),
-(2, 'testuser', '$2y$10$LOB35vH96UAqMqZEFbACZO83RVnjK22n3Sl5q8BJcnDm2feI6i2eG', 'testfirst', 'testlast', 'test@test.com', '2021-11-20 01:36:18', 'Electrical_Engineering', '', 'Alumni'),
-(3, 'jsmith', '$2y$10$FzcuV4sTBWgx7tPu9BaRiO0A2P./.j1OkPVuQyEDRblsxgy1JllD6', 'John', 'Smith', 'jsmith@test.com', '2021-11-20 22:19:13', 'Bioengineering', '', '2022'),
-(4, 'tester', '$2y$10$Q8dqng7fURzDMNtzNwCPkO2HLLAFQFvyf548BPL3kWMJoeExBbytS', 'firstname', 'lastname', 'tester@test.com', '2021-11-22 00:33:46', 'Bioengineering', '', '2021'),
-(5, 'abcdef', '$2y$10$U/43EPUK0AOry7NtSu9TT.o.tG4Bzm5XMoiCnvpALXDTgjh7wVecy', 'abcdef', 'lastname', 'abcdef@lastname.com', '2021-11-22 01:36:34', 'Information_Technology', '', '2023'),
-(6, 'ctester', '$2y$10$mAl2Fm0PjRK3D9sGQdOeZeIeK23hzBa7WLDyafRuvCOtwH3crMjPy', 'Cam', 'Jordan', 'cam@cam.com', '2021-11-22 15:25:23', 'Information_Technology', '', ''),
-(7, 'camtest', '$2y$10$DtchJwsur2Xncl7TKgKaBe7n9vpDO2/.1j3WQTYHUd0UXkVu3HWkS', 'Testfirst', 'Testlast', 'cam@test.com', '2021-11-22 16:45:09', 'Computer_Engineering', '', ''),
-(8, '2floofy4u', '$2y$10$J9txf9VH9fbhkaoFj1yCc.IMjaB.9/4Ftq4IOUBttAcDAAvIdZly6', 'flooftest', 'flooftest', 'dmbrown@oakland.edu', '2021-12-01 07:55:43', 'Information_Technology', '', ''),
-(9, 'ADMIN123', '$2y$10$AA0MC/J2prcYkgGyNfa/3.SrIz2ik4OzY6Ga70qxZ.9oNEa.fS/Mm', 'Adam', 'In', 'CSI4999.FA21@gmail.com', '2021-12-07 03:01:45', 'Information_Technology', '', ''),
-(10, 'lefloof', '$2y$10$V8Ur5SUxOPlHmJBp6E3r5OdwpF0pGL7Y34uLgLtkVCTrsaeDJwq9W', 'flooftest2', 'flooftest2', 'browndenm110@gmail.com', '2021-12-07 18:43:39', 'Information_Technology', '', '');
+INSERT INTO `user_info` (`USER_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL_ADDRESS`, `CREATED_AT`, `MAJOR`, `GRADUATION_DATE`) VALUES
+(1, 'ADMIN', '$2y$10$LOB35vH96UAqMqZEFbACZO83RVnjK22n3Sl5q8BJcnDm2feI6i2eG', 'Adam', 'In', 'admin@grizzchat.com', '2021-11-09 03:54:50', 'Information_Technology', '2023'),
+(2, 'testuser', '$2y$10$LOB35vH96UAqMqZEFbACZO83RVnjK22n3Sl5q8BJcnDm2feI6i2eG', 'testfirst', 'testlast', 'test@test.com', '2021-11-20 01:36:18', 'Electrical_Engineering', 'Alumni'),
+(3, 'jsmith', '$2y$10$FzcuV4sTBWgx7tPu9BaRiO0A2P./.j1OkPVuQyEDRblsxgy1JllD6', 'John', 'Smith', 'jsmith@test.com', '2021-11-20 22:19:13', 'Bioengineering', '2022'),
+(4, 'tester', '$2y$10$Q8dqng7fURzDMNtzNwCPkO2HLLAFQFvyf548BPL3kWMJoeExBbytS', 'firstname', 'lastname', 'tester@test.com', '2021-11-22 00:33:46', 'Bioengineering', '2021'),
+(5, 'abcdef', '$2y$10$U/43EPUK0AOry7NtSu9TT.o.tG4Bzm5XMoiCnvpALXDTgjh7wVecy', 'abcdef', 'lastname', 'abcdef@lastname.com', '2021-11-22 01:36:34', 'Information_Technology', '2023'),
+(6, 'ctester', '$2y$10$mAl2Fm0PjRK3D9sGQdOeZeIeK23hzBa7WLDyafRuvCOtwH3crMjPy', 'Cam', 'Jordan', 'cam@cam.com', '2021-11-22 15:25:23', 'Information_Technology', '2021'),
+(7, 'camtest', '$2y$10$DtchJwsur2Xncl7TKgKaBe7n9vpDO2/.1j3WQTYHUd0UXkVu3HWkS', 'Testfirst', 'Testlast', 'cam@test.com', '2021-11-22 16:45:09', 'Computer_Engineering', '2022'),
+(8, '2floofy4u', '$2y$10$J9txf9VH9fbhkaoFj1yCc.IMjaB.9/4Ftq4IOUBttAcDAAvIdZly6', 'flooftest', 'flooftest', 'dmbrown@oakland.edu', '2021-12-01 07:55:43', 'Information_Technology', '2022'),
+(9, 'ADMIN123', '$2y$10$AA0MC/J2prcYkgGyNfa/3.SrIz2ik4OzY6Ga70qxZ.9oNEa.fS/Mm', 'Adam', 'In', 'CSI4999.FA21@gmail.com', '2021-12-07 03:01:45', 'Information_Technology', '2023'),
+(10, 'lefloof', '$2y$10$V8Ur5SUxOPlHmJBp6E3r5OdwpF0pGL7Y34uLgLtkVCTrsaeDJwq9W', 'flooftest2', 'flooftest2', 'browndenm110@gmail.com', '2021-12-07 18:43:39', 'Information_Technology', '2022'),
+(11, 'cjordan', '$2y$10$8GpD4ctEMz4OWUKBPXQURek9yV0VzyGhq5kN9f3QGGkqyvo33QMxO', 'Cameron', 'Jordan', 'cjordan@oakland.edu', '2021-12-08 01:27:56', 'Information_Technology', '2022'),
+(12, 'OUAlumni2006', '$2y$10$3fVKIiYfJCcRB6yvI1sT2.NcK8rOywklTzkU3NY8qvi4mnKO/.VrS', 'Billy', 'Bob', 'OUAlumni2006@gmail.com', '2021-12-08 14:53:14', 'Computer_Engineering', 'Alumni'),
+(13, 'red_sus', '$2y$10$LEGwSnb2yJk6VEAa38KB/ustdAbACBH.UIBZ5ZNqy6v5QTOPg4/Ni', 'Red', 'Susans', 'redsus@gmail.com', '2021-12-08 15:04:53', 'Computer_Engineering', 'Alumni');
 
 --
 -- Indexes for dumped tables
@@ -303,13 +341,13 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CATEGORIES_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CATEGORIES_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ATTEMPT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -321,25 +359,25 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `passwdreset`
 --
 ALTER TABLE `passwdreset`
-  MODIFY `resetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `resetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Posts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `THREADS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `THREADS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique User ID.', AUTO_INCREMENT=11;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique User ID.', AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
