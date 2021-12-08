@@ -16,18 +16,26 @@
             require_once('Includes/userAuthHandler.php');
             loginHandler();
         ?>
-        <h1 text-align="center">Reset Your Password</h1>
-        <p>To reset your password, please enter your email below</p>
-        <form action ="Includes/resetRequest.php" method="post">
-            <input type ="text" name="email" placeholder="Enter your email address">
-            <button type="submit" name="new-password-request">Send Request</button>
-        </form>
-        <?php
-            if (isset($_GET["reset"])){
-                if ($_GET["reset"]=="success"){
-                    echo '<p class="signupsuccess">Check your email!</p>';
-                }
-            }
-        ?>
+        <section class="login-box">
+            <section class="login-area">
+                <div class="login-topbar"></div>
+                <div class="signup-logo"></div>
+                <div class="login-text signup-text">
+                    <h1 text-align="center">Reset Your Password</h1>
+                    <p>To reset your password, please enter your email below</p>
+                    <form action ="Includes/resetRequest.php" method="post">
+                        <input type ="text" name="email" placeholder="Enter your email address">
+                        <button type="submit" name="new-password-request">Send Request</button>
+                    </form>
+                    <?php
+                        if (isset($_GET["reset"])){
+                            if ($_GET["reset"]=="success"){
+                                echo '<p class="signupsuccess">Check your email!</p>';
+                            }
+                        }
+                    ?>
+                </div>
+            </section>
+        </section>
     </body>
 </html>

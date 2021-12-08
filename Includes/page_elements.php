@@ -61,7 +61,7 @@
             
         }
         echo '</div><div class="header-bottom"><nav class="header-container">';
-        echo '<a href="https://moodle.oakland.edu" title="Click here to visit the Oakland University Moodle website"  target="_blank">Moodle</a><section></section><a href="https://mysail.oakland.edu" title="Click here to visit the Oakland University MySail website" target="_blank">MySail</a><section></section><a href="notifications.php" title="View your notifications">Notifications</a>';
+        echo '<a href="https://moodle.oakland.edu" title="Click here to visit the Oakland University Moodle website"  target="_blank">Moodle</a><section></section><a href="maps.php" title="Click here to visit the Alumni Map">Alumni Map</a><section></section><a href="forum.php" title="View forum posts">Forum</a>';
         echo '<section></section><a href="contact.php" title="Click here to visit our Contact Us page">Contact</a><section></section><a href="about.php" title="View information about our organization">About Us</a>';
         echo '</nav></div></header>';
     }
@@ -69,9 +69,9 @@
     // Creates and populates the footer of the website on pages when the function is called.
     // Remember to make sure you have page_elements.php included in the frontend file if you are having issues.
     function displayFooter() {
-        echo '<footer><div><h4 class="footer-logo">GrizzChat</h4><nav><a href="index.php" title="Return to the homepage">Home</a><a href="#" title="Placeholder Link">Notifications</a>';
-        echo '<a href="#" title="Placeholder Link">Contact</a><a href="#" title="Placeholder Link">About Us</a></nav><p class="footer-copyright">Copyright © 2021</p></div>';
-        echo '<div><address><a href="#" title="Placeholder Link">Contact</a><a href="#" title="Placeholder Link">About Us</a><a href="#" title="Placeholder Link">Placeholder</a></address></div>';
+        echo '<footer><div><h4 class="footer-logo">GrizzChat</h4><nav><a href="index.php" title="Return to the homepage">Home</a><a href="forum.php" title="View the forum">Forum</a>';
+        echo '<a href="contact.php" title="View the contact page">Contact</a><a href="about.php" title="View the about us page">About Us</a></nav><p class="footer-copyright">Copyright © 2021</p></div>';
+        echo '<div><address><a href="contact.php" title="View the contact page">Contact</a><a href="maps.php" title="View the alumni map">Alumni Map</a><a href="#" title="Return to the top of the page">Back to Top</a></address></div>';
         echo '<div><p>Our Motto:</p><p>Connect with y<span class="footer-ou">OU</span>r Community</p></div></footer>';
     }
 

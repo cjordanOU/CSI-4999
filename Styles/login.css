@@ -199,6 +199,22 @@ a {
     background:crimson;
 }
 
+.warning-notification-light {
+    position:fixed;
+    display: block;
+    width: 35rem;
+    margin: auto;
+    top: 1.75em;
+    text-align: center;
+    background: rgb(179, 171, 167);
+    border-radius: 0px 0px 6px 6px;
+}
+
+.warning-topbar-light {
+    height: .75em;
+    background:rgb(37, 30, 27);
+}
+
 .float-right {
     float: right;
     margin: 0;

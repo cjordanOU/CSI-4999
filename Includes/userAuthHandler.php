@@ -21,6 +21,10 @@
         if (isset($_GET['warning']) == "notLoggedIn") {
             echo "<section class='warning-notification'><div class='warning-topbar'></div><h3>You must be logged in to perform that action.</h3></section>";
         }
+        if (isset($_GET['reset']) == "success") {
+            $recipient = $_GET['recipient'];
+            echo "<section class='warning-notification-light'><div class='warning-topbar-light'></div><h3>Email successfully sent to $recipient</h3></section>";
+        }
     }
 
 

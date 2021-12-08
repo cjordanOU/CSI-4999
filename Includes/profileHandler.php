@@ -403,4 +403,75 @@
         // If the user hits graduate, their role is switched to alumni.
     }
 
+    function displayUsersProfileOther() {
+        //$sql = "SELECT * FROM user_info WHERE USER_ID={$_SESSION["id"]}";
+        //$sql = "SELECT * FROM user_info INNER JOIN profile_info on user_info.USER_ID = profile_info.LINKED_USER_ID WHERE user_info.USER_ID={$_SESSION["id"]}";
+        $uid = $_GET["userid"];
+        $sql = "SELECT * FROM profile_info INNER JOIN user_info on profile_info.LINKED_USER_ID = user_info.USER_ID WHERE profile_info.LINKED_USER_ID=$uid";
+        $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
+        $result = $dbConnection-> query($sql);
+
+        if ($result-> num_rows > 0) {
+            while ($row = $result-> fetch_assoc()) {
+                $major = str_replace('_', ' ', $row["MAJOR"]);
+                echo "<section class='profile-box'>";
+                echo "<div class='profile-box-image'></div><hr>";
+                echo "<div class='post-box-content'><p title='Username'><b>". $row["USER_NAME"] ."</b></p>";
+                echo "<p title='Major'>". $major . " Major</p>";
+                if ($row["GRADUATION_DATE"] == "Alumni") {
+                    echo "<p title='Alumni Status'>OU Alumni</p>";
+                }
+                else {
+                    if (empty($row["GRADUATION_DATE"])) {
+                        echo "<p title='Graduation Date'>Graduation Date: 2021</p>";
+                    }
+                    else {
+                        echo "<p title='Graduation Date'>Graduation Date: ". $row["GRADUATION_DATE"] ."</p>";
+                    }
+                }
+                echo "<a href='profile-settings.php' title='Change your account settings'><div class='profile-icons'alt='Settings Icon'></div></a>";
+                echo "<p title='User since'>Grizzchat User Since: <span title='". $row["CREATED_AT"] . "'>". substr($row["CREATED_AT"], 0, -9) . "</span></p>";
+                echo "</div>";
+                echo "<div class='post-box-content'><hr>";
+                
+                if ($row["LOCATION_PRIVACY"] == "public") {
+                    echo "<p title='Work location' id='work-location'>". $row["LOCATION"] . "</p>";
+                }
+                if ($row["CONTACT_EMAIL_PRIVACY"] == "public") {
+                    echo "<p title='Contact Email'>". $row["CONTACT_EMAIL"] . "</p>";
+                }
+                if ($row["LINKEDIN_PRIVACY"] == "public") {
+                    echo "<p title='LinkedIn'>". $row["LINKEDIN"] . "</p>";
+                }
+                if ($row["ABOUT_PRIVACY"] == "public") {
+                    echo "<hr><p title='About me' class='about-me'>". $row["ABOUT"] . "</p>";
+                }
+                echo "</div><hr>";
+                echo "<div id='map' class='map-small'></div></section>";
+            }
+        }
+    }
+
+    function displayUsersPostsOther() {
+        // Select all of the user's posts and display them
+        $uid = $_GET["userid"];
+        $sql = "SELECT * FROM posts INNER JOIN threads on posts.PARENT_THREAD = threads.THREADS_ID WHERE posts.User_Info_USER_ID=$uid";
+        $dbConnection = $GLOBALS['dbConnection']; // Important since this code is inside a function
+        $result = $dbConnection-> query($sql);
+
+        if ($result-> num_rows > 0) {
+            while ($row = $result-> fetch_assoc()) {
+                echo "<section class='post-box'>";
+                echo "<div class='post-box-title'><h3 title='". $row["POST_TIME"] ."'>". $row["THREAD_TITLE"] ."</h3><hr></div>";
+                echo "<div class='post-box-content'><p>". $row["CONTENT"] ."</p></div>";
+                echo "</section>";
+            }
+        }
+        else {
+            echo "<section class='post-box post-box-empty'>";
+            echo "<div class='post-box-content'><p>You haven't made any posts yet! Start contributing today, and you can see your posts that you have made here!</p></div>";
+            echo "</section>";
+        }
+    }
+
 ?>

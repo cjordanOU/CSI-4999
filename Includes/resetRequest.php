@@ -58,7 +58,7 @@ if (isset($_POST["new-password-request"])) {
         echo "Email sending failed";
     }
 
-    //header("Location: ../reset-password.php?reset=success");
+    header("Location: ../login.php?reset=success&recipient=$userEmail");
 
 } else {
     header("Location: ../index.php");

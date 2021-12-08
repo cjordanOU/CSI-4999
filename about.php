@@ -41,9 +41,9 @@
 						 as well as Oakland University Alumni. One of the many reasons why this application was created was 
 						 that Oakland University students did not have a platform for them to reach out to each other. Futhremore,
 						  there are not many outlets for alumni to reach out to current students. GrizzChat is an online forum where 
-						  students and alumni to reach out and talk to one anoter.
+						  students and alumni to reach out and talk to one another.
                          </p>
-						 <br><br><br>
+						 <br>
 					<h1> Our Vision</h1>
 						<p> Our vision is to create a platform that will evolve and help better connect students and 
 						alumni. We hope that this can become a communication tool for all people involved with Oakland University. 

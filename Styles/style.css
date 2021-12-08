@@ -334,7 +334,7 @@ footer div nav a:hover, footer div address a:hover {
     position: absolute;
     top: 15em;
     left: 40em;
-    transform: translate(-145%, -425%);
+    transform: translate(-135%, -425%);
     z-index: 2;
     width: 80%;
     padding: 20px;
@@ -388,6 +388,7 @@ footer div nav a:hover, footer div address a:hover {
     border-radius: 6px;
     padding: .25em;
     padding-left: .65em;
+    padding-right: .65em;
     margin-top: .75em;
     box-shadow: 0 0 5px rgba(0,0,0,.14), 0 5px 12px rgba(0,0,0,.28);
 }
@@ -423,6 +424,7 @@ footer div nav a:hover, footer div address a:hover {
     height: 8em;
     background: url('../Images/default_profile.png');
     background-size: 100% 100%;
+    border-radius: 6px 6px 0px 0px;
 }
 
 .profile-icons {

@@ -13,25 +13,36 @@
         <section id="background-gradient"></section>
         <?php
             require_once('Includes/page_elements.php');
+            require_once('Includes/profileHandler.php');
             displayHeader();
             displaySidebarNavigation();
-            loginCheckRedirect(); // Not intended to be in final release
+            loginCheckRedirect();
         ?>
 
         <section id="page-content">
             
-            <section id="page-container">
-                <main>
-                    <?php
-                    $uid = $_GET["userid"];
-                    echo '<form class = "post" action="message.php?userid='.$uid.'"  class="POST" method ="POST">
-                    
-                    <input type="submit" value = "message this person" class="thread-creator">
+        <section id="page-container" class="profile-page">
+                <section id="posts-container">
+                    <main>
+                        <?php
+                        $uid = $_GET["userid"];
+                        echo '<form class = "post" action="message.php?userid='.$uid.'"  class="POST" method ="POST">
+                        
+                        <input type="submit" value = "message this person" class="thread-creator">
 
-                    </form>';
+                        </form>';
+                        
+                        displayUsersPostsOther();
+                        ?>
 
-                    ?>
-                </main>
+                    </main>
+                </section>
+
+                <section id="profile-container">
+                    <aside>
+                        <?php displayUsersProfileOther(); ?>
+                    </aside>
+                </section>
             </section>
 
             <?php displayFooter(); ?>
