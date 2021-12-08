@@ -21,7 +21,7 @@
     function displayHeader() {
         loginCheckBasic();
         echo '<header id="header"><div class="header-top">';
-        echo '<a href="index.php" title="logo" class="header-logo"><img src="Images/GrizzChat_Logo.png" alt="Grizzchat Logo"></a><input class="header-search" type="search" placeholder="Search..">';
+        echo '<a href="index.php" title="logo" class="header-logo"><img src="Images/GrizzChat_Logo.png" alt="Grizzchat Logo"></a><input class="header-search" type="search">';
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             echo '<a href="login.php" title="Click here to log in" class="header-login button-1">Login</a><a href="signup.php" title="Click here to sign up" class="header-signup button-1 button-dark">Sign Up</a>';
             
@@ -79,8 +79,8 @@
     // Remember to make sure you have page_elements.php included in the frontend file if you are having issues.
     function displaySidebarNavigation() {
         echo '<aside class="forum-navbar-container"><section class="forum-navbar-topbar"></section><section class="forum-navbar-content"><h3>Forum Navigation</h3><nav>';
-        echo '<a href="forum.php" title="View forum page ">View Forum</a><a href="maps.php" title="View the Alumni Map">Alumni Map</a><a href="#" title="Placeholder Sidebar Link">Meet an Alumni</a>';
-        echo '<a href="#" title="Placeholder Sidebar Link">Pinned Class #1</a><a href="#" title="Placeholder Sidebar Link">Pinned Class #2</a><a href="#" title="Placeholder Sidebar Link">Pinned Class #3</a>';
+        echo '<a href="forum.php" title="View forum page ">View Forum Categories</a><a href="maps.php" title="View the Alumni Map">Alumni Map</a><a href="thread.php?Categories=2" title="Shortcut to the Alumni Thread">Meet an Alumni</a>';
+        echo '<a href="thread.php?Categories=3" title="A place to view mentorship opportunities">Mentorship Opportunities</a><a href="thread.php?Categories=4" title="View the CompSci subforum">Computer Science</a><a href="thread.php?Categories=5" title="View the IT subforum">Information Technology</a><a href="thread.php?Categories=6" title="View the off topic subforum">Off Topic</a>';
         echo '</nav></section></aside>';
     }
 

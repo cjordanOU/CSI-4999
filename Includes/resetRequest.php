@@ -5,7 +5,11 @@ if (isset($_POST["new-password-request"])) {
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
 
-    $url = "localhost/CSI-4999-post-reply/new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    // Localhost URL
+    //$url = "localhost/CSI-4999-post-reply/new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+
+    // Server URL
+    $url = "http://34.68.75.57/grizzchat/new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     $expires = date("U") + 1800;
 

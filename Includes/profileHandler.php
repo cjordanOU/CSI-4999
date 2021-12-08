@@ -65,10 +65,10 @@
                     echo "<p title='Work location' id='work-location'>". $row["LOCATION"] . "</p>";
                 }
                 if ($row["CONTACT_EMAIL_PRIVACY"] == "public") {
-                    echo "<p title='Contact Email'>". $row["CONTACT_EMAIL"] . "</p>";
+                    echo "<a title='Contact Email' href='mailto:". $row["CONTACT_EMAIL"] . "'>Send me an Email</a><br>";
                 }
                 if ($row["LINKEDIN_PRIVACY"] == "public") {
-                    echo "<p title='LinkedIn'>". $row["LINKEDIN"] . "</p>";
+                    echo "<a title='LinkedIn' href='". $row["LINKEDIN"] . "'>My LinkedIn Profile</a>";
                 }
                 if ($row["ABOUT_PRIVACY"] == "public") {
                     echo "<hr><p title='About me' class='about-me'>". $row["ABOUT"] . "</p>";
@@ -441,7 +441,7 @@
                     echo "<p title='Contact Email'>". $row["CONTACT_EMAIL"] . "</p>";
                 }
                 if ($row["LINKEDIN_PRIVACY"] == "public") {
-                    echo "<p title='LinkedIn'>". $row["LINKEDIN"] . "</p>";
+                    echo "<a title='LinkedIn' href='". $row["LINKEDIN"] . "'>My LinkedIn Profile</a>";
                 }
                 if ($row["ABOUT_PRIVACY"] == "public") {
                     echo "<hr><p title='About me' class='about-me'>". $row["ABOUT"] . "</p>";

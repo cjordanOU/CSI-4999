@@ -39,13 +39,13 @@
 
         // Processing form data when form is submitted
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            echo "POST recieved\n"; // debug
+            //echo "POST recieved\n"; // debug
             // Check if username is empty
             if(empty(trim($_POST["username"]))){
                 $username_err = "Please enter username.";
             } else{
                 $GLOBALS['username'] = trim($_POST["username"]);
-                echo "username has been set globally\n"; // debug
+                //echo "username has been set globally\n"; // debug
             }
 
             // Check if password is empty
@@ -53,15 +53,15 @@
                 $password_err = "Please enter your password.";
             } else{
                 $GLOBALS['password'] = trim($_POST["password"]);
-                echo "password has been set globally\n"; // debug
+                //echo "password has been set globally\n"; // debug
             }
 
             // Validate credentials
             if(empty($username_err) && empty($password_err)) {
                 // Prepare a select statement
-                echo "select statement has been run\n"; // debug
-                echo "username is: " . $GLOBALS['username']; // debug
-                echo "password is: " . $GLOBALS['password']; // debug
+                //echo "select statement has been run\n"; // debug
+                //echo "username is: " . $GLOBALS['username']; // debug
+                //echo "password is: " . $GLOBALS['password']; // debug
                 $sql = "SELECT USER_ID, USER_NAME, PASSWORD, GRADUATION_DATE FROM user_info WHERE USER_NAME = ?";
 
                 if($stmt = mysqli_prepare($GLOBALS['dbConnection'], $sql)) {
